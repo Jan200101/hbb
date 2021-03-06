@@ -20,12 +20,13 @@ BUILD		:=	build
 SOURCES		:=	source source/gfx source/GRRLIB source/GRRLIB/fonts source/libpng source/libpng/pngu source/unzip
 DATA		:=	data  
 INCLUDES	:=	source
+INCLUDE		+= -I$(PORTLIBS_PATH)/ppc/include/ -I$(PORTLIBS_PATH)/ppc/include/freetype2/
 
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O -mrvl -Wall $(MACHDEP) $(INCLUDE)
+CFLAGS	= -g -O -mrvl -Wall -fcommon $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
@@ -33,7 +34,7 @@ LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:=	-lpng -lz -lfat -lmxml -lwiiuse -lbte -lvorbisidec -lasnd -logc -lm -lmad -lfreetype
+LIBS	:=	-L/opt/devkitpro/portlibs/ppc/lib -lz -lfat -lmxml -lwiiuse -lbte -lvorbisidec -lasnd -logc -lm -logg -lmad -lfreetype -lbz2 -lpng16 -lm
 #LIBS	:=	-lpng -lz -lfat -lmxml -lwiiuse -lbte -lvorbisidec -lasnd -logc -lmodplay -lm -lmad -lfreetype
 
 
@@ -99,7 +100,7 @@ export OUTPUT	:=	$(CURDIR)/$(TARGET)
 #---------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
-	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+	@+make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
 clean:

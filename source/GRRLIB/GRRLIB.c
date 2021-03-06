@@ -206,11 +206,11 @@ static void BitmapTo4x4RGBA(const unsigned char *src, void *dst, const unsigned 
  void *gp_fifo = NULL;
 
 
-inline void GRRLIB_FillScreen(u32 color){
+void GRRLIB_FillScreen(u32 color){
 	GRRLIB_Rectangle(-40, -40, 680,520, color, 1);
 }
 
-inline void GRRLIB_Plot(f32 x,f32 y, u32 color){
+void GRRLIB_Plot(f32 x,f32 y, u32 color){
    guVector  v[]={{x,y,0.0f}};
    GXColor c[]={GRRLIB_Splitu32(color)};
 	
@@ -220,7 +220,7 @@ void GRRLIB_NPlot(guVector v[],GXColor c[],long n){
 	GRRLIB_GXEngine(v,c,n,GX_POINTS);
 }
 
-inline void GRRLIB_Line(f32 x1, f32 y1, f32 x2, f32 y2, u32 color){
+void GRRLIB_Line(f32 x1, f32 y1, f32 x2, f32 y2, u32 color){
    guVector  v[]={{x1,y1,0.0f},{x2,y2,0.0f}};
    GXColor col = GRRLIB_Splitu32(color);
    GXColor c[]={col,col};
@@ -228,7 +228,7 @@ inline void GRRLIB_Line(f32 x1, f32 y1, f32 x2, f32 y2, u32 color){
 	GRRLIB_NGone(v,c,2);
 }
 
-inline void GRRLIB_Rectangle(f32 x, f32 y, f32 width, f32 height, u32 color, u8 filled){
+void GRRLIB_Rectangle(f32 x, f32 y, f32 width, f32 height, u32 color, u8 filled){
    guVector  v[]={{x,y,0.0f},{x+width,y,0.0f},{x+width,y+height,0.0f},{x,y+height,0.0f},{x,y,0.0f}};
    GXColor col = GRRLIB_Splitu32(color);
    GXColor c[]={col,col,col,col,col};
@@ -278,7 +278,7 @@ u8 * GRRLIB_LoadTexture(const unsigned char my_png[]) {
 	return my_texture;
 }
 
-inline void GRRLIB_DrawImg(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[], float degrees, float scaleX, f32 scaleY, u8 alpha ){
+void GRRLIB_DrawImg(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[], float degrees, float scaleX, f32 scaleY, u8 alpha ){
    GXTexObj texObj;
 
 	
@@ -326,7 +326,7 @@ inline void GRRLIB_DrawImg(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[],
 
 }
 
-inline void GRRLIB_DrawTile(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[], float degrees, float scaleX, f32 scaleY, u8 alpha, f32 frame,f32 maxframe ){
+void GRRLIB_DrawTile(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[], float degrees, float scaleX, f32 scaleY, u8 alpha, f32 frame,f32 maxframe ){
 GXTexObj texObj;
 f32 s1= frame/maxframe;
 f32 s2= (frame+1)/maxframe;
@@ -375,7 +375,7 @@ f32 t2=1;
 
 }
 
-inline void GRRLIB_DrawChar(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[], float degrees, float scaleX, f32 scaleY, f32 frame,f32 maxframe, GXColor c ){
+void GRRLIB_DrawChar(f32 xpos, f32 ypos, u16 width, u16 height, u8 data[], float degrees, float scaleX, f32 scaleY, f32 frame,f32 maxframe, GXColor c ){
 GXTexObj texObj;
 f32 s1= frame/maxframe;
 f32 s2= (frame+1)/maxframe;

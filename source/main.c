@@ -329,7 +329,7 @@ int main(int argc, char **argv) {
 		suspend_www_thread();
 		
 		if (www_passed == false) {
-			die("\nReturning you back to HBC. Please check to see if www.codemii.com and www2.codemii.com are working.\n"); 
+			die("\nReturning you back to HBC. Please check to see if hbb1.oscwii.org and hbb2.oscwii.org are working.\n"); 
 		}
 		
 		printf("Connection established\n"); 
@@ -360,7 +360,7 @@ int main(int argc, char **argv) {
 		suspend_www_thread();
 		
 		if (www_passed == false) {
-			die("\nReturning you back to HBC. Please check to see if www2.codemii.com is working.\n"); 
+			die("\nReturning you back to HBC. Please check to see if hbb2.oscwii.org is working.\n"); 
 		}
 		
 		printf("Connection established\n"); 

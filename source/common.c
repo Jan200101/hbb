@@ -39,6 +39,8 @@ ftpii Source Code Copyright (C) 2008 Joseph Jordan <joe.ftpii@psychlaw.com.au>
 #include <sdcard/wiisd_io.h>
 #include <ogc/usbstorage.h>
 
+#include <sys/param.h>
+
 char rootdir[10];
 
 const DISC_INTERFACE* sd = &__io_wiisd;
@@ -1330,7 +1332,7 @@ static void *run_rating_thread(void *arg) {
 	//strcat(http_request,"&name=");
 	//strcat(http_request,homebrew_list[selected_app].name);
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
-	//strcat(http_request," HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+	//strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	
 	if (setting_repo == 0) {
 		strcpy(http_request,"GET /hbb/get_rating.php?esid=");
@@ -1348,10 +1350,10 @@ static void *run_rating_thread(void *arg) {
 	strcat(http_request, " HTTP/1.0\r\nHost: ");
 	if (setting_repo == 0) {
 		if (codemii_backup == false) {
-			strcat(http_request, "www.codemii.com");
+			strcat(http_request, "hbb1.oscwii.org");
 		}
 		else {
-			strcat(http_request, "www2.codemii.com");
+			strcat(http_request, "hbb2.oscwii.org");
 		}
 	}
 	else {
@@ -1446,7 +1448,7 @@ static void *run_update_rating_thread(void *arg) {
 	//strcat(http_request,"&rate=");
 	//strcat(http_request, rating_number);
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
-	//strcat(http_request," HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+	//strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	
 	if (setting_repo == 0) {
 		strcpy(http_request,"GET /hbb/update_rating.php?esid=");
@@ -1466,10 +1468,10 @@ static void *run_update_rating_thread(void *arg) {
 	strcat(http_request, " HTTP/1.0\r\nHost: ");
 	if (setting_repo == 0) {
 		if (codemii_backup == false) {
-			strcat(http_request, "www.codemii.com");
+			strcat(http_request, "hbb1.oscwii.org");
 		}
 		else {
-			strcat(http_request, "www2.codemii.com");
+			strcat(http_request, "hbb2.oscwii.org");
 		}
 	}
 	else {
@@ -2746,7 +2748,7 @@ void initialise() {
 	if(vmode->viTVMode&VI_NON_INTERLACE) VIDEO_WaitVSync();
 	MP3Player_Init();
 	// Initialise the audio
-	ASND_Init(NULL);
+	ASND_Init();
 	//AESND_Init(NULL);
 	//MODPlay_Init(&play);
 	xfb_height = vmode->xfbHeight;
@@ -3026,10 +3028,10 @@ bool check_wifi() {
 }
 
 void initialise_codemii() {
-	printf("Requesting IP address of www.codemii.com... ");
+	printf("Requesting IP address of hbb1.oscwii.org... ");
 	initializedns();
 	//IP_ADDRESS = getipbynamecached("test");
-	IP_ADDRESS = getipbynamecached("www.codemii.com");
+	IP_ADDRESS = getipbynamecached("hbb1.oscwii.org");
 	
 	if (IP_ADDRESS == 0) {
 		printf("Failed, using stored IP address\n");
@@ -3041,12 +3043,12 @@ void initialise_codemii() {
 }
 
 void initialise_codemii_backup() {
-	printf("Requesting IP address of www2.codemii.com... ");
+	printf("Requesting IP address of hbb2.oscwii.org... ");
 	hostname_ok = true;
 	if (setting_server == true) {
 		initializedns();
 	}
-	IP_ADDRESS = getipbynamecached("www2.codemii.com");
+	IP_ADDRESS = getipbynamecached("hbb2.oscwii.org");
 	
 	if (IP_ADDRESS == 0) {
 		printf("Failed, using stored IP address\n");
@@ -3509,7 +3511,7 @@ void add_to_stats() {
 	char http_request[1000];
 	//strcpy(http_request,"GET /hbb_download.php?name=");
 	//strcat(http_request,homebrew_list[selected_app].name);
-	//strcat(http_request," HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+	//strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	
 	if (setting_repo == 0) {
 		strcpy(http_request, "GET /hbb_download.php?name=");
@@ -3525,10 +3527,10 @@ void add_to_stats() {
 	strcat(http_request, " HTTP/1.0\r\nHost: ");
 	if (setting_repo == 0) {
 		if (codemii_backup == false) {
-			strcat(http_request, "www.codemii.com");
+			strcat(http_request, "hbb1.oscwii.org");
 		}
 		else {
-			strcat(http_request, "www2.codemii.com");
+			strcat(http_request, "hbb2.oscwii.org");
 		}
 	}
 	else {
@@ -3565,10 +3567,10 @@ void apps_check() {
 		//strcat(http_request, " HTTP/1.0\r\n\r\n");
 		
 		if (codemii_backup == false) {
-			strcat(http_request," HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+			strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 		}
 		else {
-			strcat(http_request," HTTP/1.0\r\nHost: www2.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+			strcat(http_request," HTTP/1.0\r\nHost: hbb2.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 		}
 		
 		write_http_reply(main_server, http_request);
@@ -3738,10 +3740,10 @@ void repo_check() {
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
 	
 	if (codemii_backup == false) {
-		strcat(http_request," HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+		strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	}
 	else {
-		strcat(http_request," HTTP/1.0\r\nHost: www2.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+		strcat(http_request," HTTP/1.0\r\nHost: hbb2.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	}
 	
 	write_http_reply(main_server, http_request);
@@ -3852,10 +3854,10 @@ void repo_check() {
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
 	
 	if (codemii_backup == false) {
-		strcat(http_request," HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+		strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	}
 	else {
-		strcat(http_request," HTTP/1.0\r\nHost: www2.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+		strcat(http_request," HTTP/1.0\r\nHost: hbb2.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 	}
 	
 	write_http_reply(main_server, http_request);
@@ -3960,7 +3962,7 @@ void repo_check() {
 	if (n == 0) { printf("Server check passed.\n\n"); return true; }
 	else { 
 		printf("Server check failed.\n\n"); 
-		die("Returning you back to HBC. Please check to see if www.codemii.com is working or please try using another DNS server.\n"); 
+		die("Returning you back to HBC. Please check to see if hbb1.oscwii.org is working or please try using another DNS server.\n"); 
 	}
 	
 	return false;
@@ -3969,8 +3971,10 @@ void repo_check() {
 // Check for updates to the Homebrew Browser
 void update_check() {
 	
-	printf("\n\nChecking for Homebrew Browser updates... ");
+	printf("\n\nChecking for Homebrew Browser updates...\n");
 	
+	return;
+
 	// Open the file 
 	FILE *f;
 	if (setting_use_sd == true) {
@@ -4343,10 +4347,10 @@ s32 server_connect(int repo_bypass) {
 	if (setting_repo == 0 || repo_bypass == 1) {
 		if (hostname_ok == true) {
 			if (codemii_backup == false) {
-				connect_addr.sin_addr.s_addr= getipbynamecached("www.codemii.com");
+				connect_addr.sin_addr.s_addr= getipbynamecached("hbb1.oscwii.org");
 			}
 			else {
-				connect_addr.sin_addr.s_addr= getipbynamecached("www2.codemii.com");
+				connect_addr.sin_addr.s_addr= getipbynamecached("hbb2.oscwii.org");
 			}
 		}
 		else {
@@ -5135,10 +5139,10 @@ s32 request_list_file(char *file_path, char *path) {
 		strcat(http_request, " HTTP/1.0\r\nHost: ");
 		if (setting_repo == 0) {
 			if (codemii_backup == false) {
-				strcat(http_request, "www.codemii.com");
+				strcat(http_request, "hbb1.oscwii.org");
 			}
 			else {
-				strcat(http_request, "www2.codemii.com");
+				strcat(http_request, "hbb2.oscwii.org");
 			}
 		}
 		else {
@@ -5241,10 +5245,10 @@ s32 create_and_request_file(char* path1, char* appname, char *filename) {
 		strcat(http_request, " HTTP/1.0\r\nHost: ");
 		if (setting_repo == 0) {
 			if (codemii_backup == false) {
-				strcat(http_request, "www.codemii.com");
+				strcat(http_request, "hbb1.oscwii.org");
 			}
 			else {
-				strcat(http_request, "www2.codemii.com");
+				strcat(http_request, "hbb2.oscwii.org");
 			}
 		}
 		else {
@@ -5252,7 +5256,7 @@ s32 create_and_request_file(char* path1, char* appname, char *filename) {
 		}
 		strcat(http_request, "\r\nCache-Control: no-cache\r\n\r\n");
 		//strcat(http_request, " HTTP/1.0\r\n\r\n");
-		//strcat(http_request, " HTTP/1.0\r\nHost: www.codemii.com\r\nCache-Control: no-cache\r\n\r\n");
+		//strcat(http_request, " HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
 		
 		//strcpy(testy, http_request);
 		
