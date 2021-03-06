@@ -429,14 +429,13 @@ f32 t2=1;
 void GRRLIB_Printf(f32 xpos, f32 ypos, u8 data[], u32 color, f32 zoom, char *text,...){
 int i ;
 char tmp[1024];
-int size=0;
+
 
 va_list argp;
 va_start(argp, text);
 vsprintf(tmp, text, argp);
 va_end(argp);
 
-size = strlen(tmp);
 GXColor col = GRRLIB_Splitu32(color);
 	for(i=0;i<strlen(tmp);i++){
 		u8 c = tmp[i];
