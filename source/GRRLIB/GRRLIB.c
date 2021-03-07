@@ -254,11 +254,12 @@ u8 * GRRLIB_LoadTextureFromFile(const char *filename) {
    PNGUPROP imgProp;
    IMGCTX ctx;
    void *my_texture;
-	
+
+   int a,b;
+
 	ctx = PNGU_SelectImageFromDevice(filename);
         PNGU_GetImageProperties (ctx, &imgProp);
-        my_texture = memalign (32, imgProp.imgWidth * imgProp.imgHeight * 4);
-        PNGU_DecodeTo4x4RGBA8 (ctx, imgProp.imgWidth, imgProp.imgHeight, my_texture, 255);
+        my_texture = PNGU_DecodeTo4x4RGBA8 (ctx, imgProp.imgWidth, imgProp.imgHeight, &a, &b, NULL);
         PNGU_ReleaseImageContext (ctx);
         DCFlushRange (my_texture, imgProp.imgWidth * imgProp.imgHeight * 4);
     return my_texture;
@@ -269,10 +270,11 @@ u8 * GRRLIB_LoadTexture(const unsigned char my_png[]) {
    IMGCTX ctx;
    void *my_texture;
 
+   int a,b;
+
    	ctx = PNGU_SelectImageFromBuffer(my_png);
         PNGU_GetImageProperties (ctx, &imgProp);
-        my_texture = memalign (32, imgProp.imgWidth * imgProp.imgHeight * 4);
-        PNGU_DecodeTo4x4RGBA8 (ctx, imgProp.imgWidth, imgProp.imgHeight, my_texture, 255);
+        my_texture = PNGU_DecodeTo4x4RGBA8 (ctx, imgProp.imgWidth, imgProp.imgHeight, &a, &b, NULL);
         PNGU_ReleaseImageContext (ctx);
         DCFlushRange (my_texture, imgProp.imgWidth * imgProp.imgHeight * 4);
 	return my_texture;
