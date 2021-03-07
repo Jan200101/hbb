@@ -67,6 +67,37 @@ static u32 *xfb[2] = { NULL, NULL };
 static GXRModeObj *vmode;
 int xfb_height = 0;
 
+struct repo_struct repo_list[200];
+
+struct updated_apps_struct updated_apps_list[1600];
+
+// List to show
+struct homebrew_struct homebrew_list[1600];
+struct text_struct text_list[1600];
+
+struct homebrew_struct emulators_list[300];
+struct homebrew_struct games_list[600];
+struct homebrew_struct media_list[300];
+struct homebrew_struct utilities_list[300];
+struct homebrew_struct demos_list[300];
+
+// Total list
+struct homebrew_struct total_list[600];
+
+// Temp list
+struct sort_homebrew_struct temp_list[600];
+struct homebrew_struct temp_list2[600];
+struct sort_homebrew_struct temp1_list[2];
+
+// Temp list to use to download/extract/delete
+struct homebrew_struct store_homebrew_list[2];
+
+// Folders exist list
+struct sort_homebrew_struct folders_list[500];
+
+// Apps to not manage
+struct sort_homebrew_struct no_manage_list[500];
+
 // Modplay
 //static MODPlay play;
 

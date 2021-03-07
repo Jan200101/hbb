@@ -28,7 +28,7 @@ FALLBACK_DOMAIN	:=	hbb2.oscwii.org
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O -mrvl -Wall -fcommon -DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" $(MACHDEP) $(INCLUDE)
+CFLAGS	= -g -O -mrvl -Wall -DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map

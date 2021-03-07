@@ -185,8 +185,8 @@ float ir_rotation = 0;
 
 // Time info
 long current_time;
-struct tm * timeinfo;
-time_t app_time;
+extern struct tm * timeinfo;
+extern time_t app_time;
 
 int category_selection = 2;
 bool update_about = false;
