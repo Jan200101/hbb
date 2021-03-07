@@ -1332,7 +1332,7 @@ static void *run_rating_thread(void *arg) {
 	//strcat(http_request,"&name=");
 	//strcat(http_request,homebrew_list[selected_app].name);
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
-	//strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+	//strcat(http_request," HTTP/1.0\r\nHost: " MAIN_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 
 	if (setting_repo == 0) {
 		strcpy(http_request,"GET /hbb/get_rating.php?esid=");
@@ -1350,10 +1350,10 @@ static void *run_rating_thread(void *arg) {
 	strcat(http_request, " HTTP/1.0\r\nHost: ");
 	if (setting_repo == 0) {
 		if (codemii_backup == false) {
-			strcat(http_request, "hbb1.oscwii.org");
+			strcat(http_request, MAIN_DOMAIN);
 		}
 		else {
-			strcat(http_request, "hbb2.oscwii.org");
+			strcat(http_request, FALLBACK_DOMAIN);
 		}
 	}
 	else {
@@ -1448,7 +1448,7 @@ static void *run_update_rating_thread(void *arg) {
 	//strcat(http_request,"&rate=");
 	//strcat(http_request, rating_number);
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
-	//strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+	//strcat(http_request," HTTP/1.0\r\nHost: " MAIN_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 
 	if (setting_repo == 0) {
 		strcpy(http_request,"GET /hbb/update_rating.php?esid=");
@@ -1468,10 +1468,10 @@ static void *run_update_rating_thread(void *arg) {
 	strcat(http_request, " HTTP/1.0\r\nHost: ");
 	if (setting_repo == 0) {
 		if (codemii_backup == false) {
-			strcat(http_request, "hbb1.oscwii.org");
+			strcat(http_request, MAIN_DOMAIN);
 		}
 		else {
-			strcat(http_request, "hbb2.oscwii.org");
+			strcat(http_request, FALLBACK_DOMAIN);
 		}
 	}
 	else {
@@ -3028,10 +3028,10 @@ bool check_wifi() {
 }
 
 void initialise_codemii() {
-	printf("Requesting IP address of hbb1.oscwii.org... ");
+	printf("Requesting IP address of " MAIN_DOMAIN "... ");
 	initializedns();
 	//IP_ADDRESS = getipbynamecached("test");
-	IP_ADDRESS = getipbynamecached("hbb1.oscwii.org");
+	IP_ADDRESS = getipbynamecached(MAIN_DOMAIN);
 
 	if (IP_ADDRESS == 0) {
 		printf("Failed, using stored IP address\n");
@@ -3043,12 +3043,12 @@ void initialise_codemii() {
 }
 
 void initialise_codemii_backup() {
-	printf("Requesting IP address of hbb2.oscwii.org... ");
+	printf("Requesting IP address of " FALLBACK_DOMAIN "... ");
 	hostname_ok = true;
 	if (setting_server == true) {
 		initializedns();
 	}
-	IP_ADDRESS = getipbynamecached("hbb2.oscwii.org");
+	IP_ADDRESS = getipbynamecached(FALLBACK_DOMAIN);
 
 	if (IP_ADDRESS == 0) {
 		printf("Failed, using stored IP address\n");
@@ -3511,7 +3511,7 @@ void add_to_stats() {
 	char http_request[1000];
 	//strcpy(http_request,"GET /hbb_download.php?name=");
 	//strcat(http_request,homebrew_list[selected_app].name);
-	//strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+	//strcat(http_request," HTTP/1.0\r\nHost: " MAIN_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 
 	if (setting_repo == 0) {
 		strcpy(http_request, "GET /hbb_download.php?name=");
@@ -3527,10 +3527,10 @@ void add_to_stats() {
 	strcat(http_request, " HTTP/1.0\r\nHost: ");
 	if (setting_repo == 0) {
 		if (codemii_backup == false) {
-			strcat(http_request, "hbb1.oscwii.org");
+			strcat(http_request, MAIN_DOMAIN);
 		}
 		else {
-			strcat(http_request, "hbb2.oscwii.org");
+			strcat(http_request, FALLBACK_DOMAIN);
 		}
 	}
 	else {
@@ -3567,10 +3567,10 @@ void apps_check() {
 		//strcat(http_request, " HTTP/1.0\r\n\r\n");
 
 		if (codemii_backup == false) {
-			strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+			strcat(http_request," HTTP/1.0\r\nHost: " MAIN_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 		}
 		else {
-			strcat(http_request," HTTP/1.0\r\nHost: hbb2.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+			strcat(http_request," HTTP/1.0\r\nHost: " FALLBACK_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 		}
 
 		write_http_reply(main_server, http_request);
@@ -3740,10 +3740,10 @@ void repo_check() {
 	//strcat(http_request, " HTTP/1.0\r\n\r\n");
 
 	if (codemii_backup == false) {
-		strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+		strcat(http_request," HTTP/1.0\r\nHost: " MAIN_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 	}
 	else {
-		strcat(http_request," HTTP/1.0\r\nHost: hbb2.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+		strcat(http_request," HTTP/1.0\r\nHost: " FALLBACK_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 	}
 
 	write_http_reply(main_server, http_request);
@@ -3837,136 +3837,6 @@ void repo_check() {
 		printf("Failed to receive Repositories list.\n");
 	}
 }
-
-
-/*bool check_server() {
-
-	long serv_time = 0;
-	long enc_key = 891273139;
-	char serv_md5[150];
-	char md5_result[150] = "";
-	int count = 0;
-
-	s32 main_server = server_connect(1);
-
-	char http_request[1000];
-	strcpy(http_request,"GET /hbb/check.php");
-	//strcat(http_request, " HTTP/1.0\r\n\r\n");
-
-	if (codemii_backup == false) {
-		strcat(http_request," HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
-	}
-	else {
-		strcat(http_request," HTTP/1.0\r\nHost: hbb2.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
-	}
-
-	write_http_reply(main_server, http_request);
-
-	bool http_data = false;
-	char buf[BUFFER_SIZE];
-	s32 offset = 0;
-	s32 bytes_read;
-	while (offset < (BUFFER_SIZE - 1)) {
-		char *offset_buf = buf + offset;
-		if ((bytes_read = net_read(main_server, offset_buf, BUFFER_SIZE - 1 - offset)) < 0) {
-			printf("Read error %i occurred. Retrying...\n", bytes_read);
-			net_close(main_server);
-			sleep(1);
-			return 0;
-		} else if (bytes_read == 0) {
-			break; // EOF from client
-		}
-		offset += bytes_read;
-		buf[offset] = '\0';
-
-		char *next;
-		char *end;
-		for (next = buf; (end = strstr(next, CRLF)); next = end + CRLF_LENGTH) {
-			*end = '\0';
-
-			if (*next) {
-				char *cmd_line = next;
-
-				//printf("Message: %s\n", cmd_line);
-
-				// If HTTP status code is 4xx or 5xx then close connection and try again 3 times
-				if (strstr(cmd_line, "HTTP/1.1 4") || strstr(cmd_line, "HTTP/1.1 5")) {
-					printf("The server appears to be having an issue. Retrying...\n");
-					net_close(main_server);
-					sleep(1);
-					return 0;
-				}
-
-				if (strlen(cmd_line) == 1) {
-					http_data = true;
-				}
-
-				if (http_data == true) {
-					//printf("OK\n");
-					if (count == 1) {
-						serv_time = atoi(cmd_line);
-					}
-					if (count == 2) {
-						strcpy(serv_md5, cmd_line);
-					}
-					count++;
-				}
-			}
-		}
-
-		if (next != buf) { // some lines were processed
-			offset = strlen(next);
-			char tmp_buf[offset];
-			memcpy(tmp_buf, next, offset);
-			memcpy(buf, tmp_buf, offset);
-		}
-	}
-
-	net_close(main_server);
-
-	//printf("Server says: %li %s\n", serv_time, serv_md5);
-
-    char temp_str[100];
-    sprintf(temp_str, "%li", serv_time ^ enc_key);
-
-    static char *const test = "          ";
-    strcpy(test,temp_str);
-
-    md5_state_t state;
-    md5_byte_t digest[16];
-
-    md5_init(&state);
-    md5_append(&state, (const md5_byte_t *)test, strlen(test));
-    md5_finish(&state, digest);
-
-    char temp1[150] = "";
-    int di;
-    for (di = 0; di < 16; ++di) {
-        sprintf(temp1, "%x", digest[di]);
-        strcat(md5_result, temp1);
-    }
-
-    //printf("Client says: %s\n", md5_result);   */
-
-	/* // Test print
-	printf("MD5 (\"%s\") = ", (char*)test);
-	for (di = 0; di < 16; ++di)
-		printf("%02x", digest[di]);*/
-
-
-	/*int n;
-	size_t len1, len2;
-	len1=strlen(serv_md5);
-	len2=strlen(md5_result);
-	n=memcmp ( serv_md5, md5_result, len1>len2?len1:len2 );
-	if (n == 0) { printf("Server check passed.\n\n"); return true; }
-	else {
-		printf("Server check failed.\n\n");
-		die("Returning you back to HBC. Please check to see if hbb1.oscwii.org is working or please try using another DNS server.\n");
-	}
-
-	return false;
-}*/
 
 // Check for updates to the Homebrew Browser
 void update_check() {
@@ -4344,10 +4214,10 @@ s32 server_connect(int repo_bypass) {
 	if (setting_repo == 0 || repo_bypass == 1) {
 		if (hostname_ok == true) {
 			if (codemii_backup == false) {
-				connect_addr.sin_addr.s_addr= getipbynamecached("hbb1.oscwii.org");
+				connect_addr.sin_addr.s_addr= getipbynamecached(MAIN_DOMAIN);
 			}
 			else {
-				connect_addr.sin_addr.s_addr= getipbynamecached("hbb2.oscwii.org");
+				connect_addr.sin_addr.s_addr= getipbynamecached(FALLBACK_DOMAIN);
 			}
 		}
 		else {
@@ -5134,10 +5004,10 @@ s32 request_list_file(char *file_path, char *path) {
 		strcat(http_request, " HTTP/1.0\r\nHost: ");
 		if (setting_repo == 0) {
 			if (codemii_backup == false) {
-				strcat(http_request, "hbb1.oscwii.org");
+				strcat(http_request, MAIN_DOMAIN);
 			}
 			else {
-				strcat(http_request, "hbb2.oscwii.org");
+				strcat(http_request, FALLBACK_DOMAIN);
 			}
 		}
 		else {
@@ -5240,10 +5110,10 @@ s32 create_and_request_file(char* path1, char* appname, char *filename) {
 		strcat(http_request, " HTTP/1.0\r\nHost: ");
 		if (setting_repo == 0) {
 			if (codemii_backup == false) {
-				strcat(http_request, "hbb1.oscwii.org");
+				strcat(http_request, MAIN_DOMAIN);
 			}
 			else {
-				strcat(http_request, "hbb2.oscwii.org");
+				strcat(http_request, FALLBACK_DOMAIN);
 			}
 		}
 		else {
@@ -5251,7 +5121,7 @@ s32 create_and_request_file(char* path1, char* appname, char *filename) {
 		}
 		strcat(http_request, "\r\nCache-Control: no-cache\r\n\r\n");
 		//strcat(http_request, " HTTP/1.0\r\n\r\n");
-		//strcat(http_request, " HTTP/1.0\r\nHost: hbb1.oscwii.org\r\nCache-Control: no-cache\r\n\r\n");
+		//strcat(http_request, " HTTP/1.0\r\nHost: " MAIN_DOMAIN "\r\nCache-Control: no-cache\r\n\r\n");
 
 		//strcpy(testy, http_request);
 

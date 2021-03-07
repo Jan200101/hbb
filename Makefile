@@ -18,15 +18,17 @@ include $(DEVKITPPC)/wii_rules
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	source source/gfx source/GRRLIB source/GRRLIB/fonts source/libpng source/unzip
-DATA		:=	data  
-INCLUDES	:=	source
-INCLUDE		+= -I$(PORTLIBS_PATH)/ppc/include/ -I$(PORTLIBS_PATH)/ppc/include/freetype2/
+DATA		:=	data
+INCLUDES	:=	$(CURDIR)/source/ $(PORTLIBS_PATH)/ppc/include/ $(PORTLIBS_PATH)/ppc/include/freetype2/
+
+MAIN_DOMAIN 	:=	hbb1.oscwii.org
+FALLBACK_DOMAIN	:=	hbb2.oscwii.org
 
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O -mrvl -Wall -fcommon $(MACHDEP) $(INCLUDE)
+CFLAGS	= -g -O -mrvl -Wall -fcommon -DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
@@ -34,7 +36,7 @@ LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:=	-L/opt/devkitpro/portlibs/ppc/lib -lz -lfat -lmxml -lwiiuse -lbte -lvorbisidec -lasnd -logc -lm -logg -lmad -lfreetype -lbz2 -lpng16 -lm -lpngu
+LIBS	:=	-lz -lfat -lmxml -lwiiuse -lbte -lvorbisidec -lasnd -logc -lm -logg -lmad -lfreetype -lbz2 -lpng16 -lm -lpngu
 #LIBS	:=	-lpng -lz -lfat -lmxml -lwiiuse -lbte -lvorbisidec -lasnd -logc -lmodplay -lm -lmad -lfreetype
 
 
@@ -42,7 +44,7 @@ LIBS	:=	-L/opt/devkitpro/portlibs/ppc/lib -lz -lfat -lmxml -lwiiuse -lbte -lvorb
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(CURDIR)
+LIBDIRS	:= $(CURDIR) $(PORTLIBS_PATH)/ppc
 
 #---------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional
@@ -61,7 +63,9 @@ export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 #---------------------------------------------------------------------------------
 # automatically build a list of object files for our project
 #---------------------------------------------------------------------------------
-CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
+PNGFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.png)))
+CFILES		:=	$(patsubst %.png,%.c,$(PNGFILES)) \
+				$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 sFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.S)))
@@ -83,7 +87,7 @@ export OFILES	:=	$(addsuffix .o,$(BINFILES)) \
 #---------------------------------------------------------------------------------
 # build a list of include paths
 #---------------------------------------------------------------------------------
-export INCLUDE	:=	$(foreach dir,$(INCLUDES), -iquote $(CURDIR)/$(dir)) \
+export INCLUDE	:=	$(foreach dir,$(INCLUDES), -I$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
 					-I$(CURDIR)/$(BUILD) \
 					-I$(LIBOGC_INC)
@@ -91,11 +95,11 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES), -iquote $(CURDIR)/$(dir)) \
 #---------------------------------------------------------------------------------
 # build a list of library paths
 #---------------------------------------------------------------------------------
-export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) \
-					-L$(LIBOGC_LIB)
+export LIBPATHS	:=	-L$(LIBOGC_LIB) \
+					$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
-.PHONY: $(BUILD) clean
+.PHONY: $(BUILD) clean run reload
 
 #---------------------------------------------------------------------------------
 $(BUILD):
@@ -110,11 +114,6 @@ clean:
 #---------------------------------------------------------------------------------
 run:
 	wiiload $(TARGET).dol
-
-#---------------------------------------------------------------------------------
-reload:
-	psoload -r $(TARGET).dol
-
 
 #---------------------------------------------------------------------------------
 else
@@ -144,6 +143,10 @@ $(OUTPUT).elf: $(OFILES)
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	$(bin2o)
+
+%.c : %.png
+	@echo $(notdir $<) 
+	@raw2c $<
 
 -include $(DEPENDS)
 
