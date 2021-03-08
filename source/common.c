@@ -63,7 +63,6 @@ const char *CRLF = "\r\n";
 const u32 CRLF_LENGTH = 2;
 char esid[50];
 
-static u32 *xfb[2] = { NULL, NULL };
 static GXRModeObj *vmode;
 int xfb_height = 0;
 

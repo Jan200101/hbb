@@ -12,6 +12,7 @@ ftpii Source Code Copyright (C) 2008 Joseph Jordan <joe.ftpii@psychlaw.com.au>
 #define _COMMON_H_
 
 #include <ogcsys.h>
+#include "GRRLIB/GRRLIB.h"
 
 #define COLOUR_WHITE 0xFFFFFF
 #define COLOUR_RED 0xFF0000
@@ -233,8 +234,8 @@ struct homebrew_struct {
 
 struct text_struct {
 	int text;
-	void *str_name;
-	void *str_short_description;	
+	GRRLIB_texImg *str_name;
+	GRRLIB_texImg *str_short_description;	
 };
 
 struct sort_homebrew_struct {
