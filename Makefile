@@ -28,10 +28,10 @@ FALLBACK_DOMAIN	:=	hbb2.oscwii.org
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O -mrvl -Wall -DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" $(MACHDEP) $(INCLUDE)
+CFLAGS		= -g -O -mrvl -Wall -DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
-LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
+LDFLAGS		=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
@@ -64,7 +64,8 @@ export DEPSDIR	:=	$(CURDIR)/$(BUILD)
 # automatically build a list of object files for our project
 #---------------------------------------------------------------------------------
 PNGFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.png)))
-CFILES		:=	$(patsubst %.png,%.c,$(PNGFILES)) \
+TTFFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.ttf)))
+CFILES		:=	$(patsubst %.png,%.c,$(PNGFILES)) $(patsubst %.ttf,%.c,$(TTFFILES)) \
 				$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 sFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
@@ -146,7 +147,11 @@ $(OUTPUT).elf: $(OFILES)
 
 %.c : %.png
 	@echo $(notdir $<) 
-	@raw2c $<
+	@raw2c $< ||:
+
+%.c : %.ttf
+	@echo $(notdir $<) 
+	@raw2c $< ||:
 
 -include $(DEPENDS)
 

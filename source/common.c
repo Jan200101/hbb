@@ -2803,37 +2803,43 @@ void initialise_fat() {
 	bool fat_init = false;
 
 	// At least one FAT initialisation has to be completed
-	while (fat_init != true) {
-		printf("Attempting to mount SD card... ");
-		if (initialise_device(METHOD_SD)) {
-			strcpy(rootdir, "sd:/");
+	printf("Attempting to mount SD card... ");
+	if (initialise_device(METHOD_SD)) {
+		strcpy(rootdir, "sd:/");
+		if (test_fat() == true) {
+			fat_init = true;
+			sd_mounted = true;
+			printf("SD card mounted.\n");
+			load_mount_settings();
+		}
+		else {
+			fatUnmount("sd:");
+			sleep(1);
+		}
+	}
+	if (setting_disusb == false) {
+		printf("Attempting to mount USB device... ");
+		if (initialise_device(METHOD_USB)) {
+			strcpy(rootdir, "usb:/");
 			if (test_fat() == true) {
 				fat_init = true;
-				sd_mounted = true;
-				printf("SD card mounted.\n");
-				load_mount_settings();
+				usb_mounted = true;
+				printf("USB device mounted.\n");
 			}
 			else {
-				fatUnmount("sd:");
+				fatUnmount("usb:");
 				sleep(1);
 			}
 		}
-		if (setting_disusb == false) {
-			printf("Attempting to mount USB device... ");
-			if (initialise_device(METHOD_USB)) {
-				strcpy(rootdir, "usb:/");
-				if (test_fat() == true) {
-					fat_init = true;
-					usb_mounted = true;
-					printf("USB device mounted.\n");
-				}
-				else {
-					fatUnmount("usb:");
-					sleep(1);
-				}
-			}
-		}
 	}
+
+	if (!fat_init)
+	{
+		printf("Could not mount SD card or USB device...");
+		sleep(5);
+		exit(0);
+	}
+
 }
 
 bool initialise_device(int method) {

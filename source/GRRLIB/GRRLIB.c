@@ -9,7 +9,7 @@
 /******************************************************************************/
 /**** FREETYPE START ****/
 /* This is a very rough implementation if freetype using GRRLIB */
-#include "fonts/ttf_font.h" /* A truetype font converted with raw2c */
+#include "ttf_font.h" /* A truetype font converted with raw2c */
 #include <ft2build.h> /* I presume you have freetype for the Wii installed */
 #include FT_FREETYPE_H
 
