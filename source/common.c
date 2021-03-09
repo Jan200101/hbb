@@ -24,7 +24,7 @@ ftpii Source Code Copyright (C) 2008 Joseph Jordan <joe.ftpii@psychlaw.com.au>
 #include <unistd.h>
 #include <wiiuse/wpad.h>
 #include <zlib.h>
-#include <mp3player.h>
+#include "mp3player.h"
 #include "oggplayer.h"
 #include <mxml.h>
 #include "unzip/unzip.h"

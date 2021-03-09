@@ -12,4 +12,4 @@ from the [source code](https://www.codemii.com/2020/01/02/homebrew-browser-sourc
 - [x] replace GRRLIB with the upstream
 - [ ] replace unzip with upstream ([tracker](https://github.com/devkitPro/pacman-packages/issues/215))
 - [ ] correct image placement
-- [ ] migrate mp3player from libogc/libmad to this project and use upstream libmad
+- [x] migrate mp3player from libogc/libmad to this project and use upstream libmad
