@@ -2338,29 +2338,29 @@ int main(int argc, char **argv) {
 			// Submit Rating
 			if (rating_in_progress == true) {
 				GRRLIB_DrawImg(210, 374, str_rate_app, 0, 1.0, 1.0, 0xFFFFFFFF);
-				GRRLIB_DrawImg(258, 408, rate_0_img, 0, 2, 2, 0xFFFFFFFF);
+				GRRLIB_DrawImg(208, 400, rate_0_img, 0, 2, 2, 0xFFFFFFFF);
 
 				bool submit_rating = false;
 
 				if (wait_a_press == 0) {
 					if (ir.x > 196 && ir.x < 235 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(258, 408, rate_1_img, 0, 2, 2, 0xFFFFFFFF);
+						GRRLIB_DrawImg(208, 400, rate_1_img, 0, 2, 2, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '1'; submit_rating = true; }
 					}
 					if (ir.x > 235 && ir.x < 274 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(258, 408, rate_2_img, 0, 2, 2, 0xFFFFFFFF);
+						GRRLIB_DrawImg(208, 400, rate_2_img, 0, 2, 2, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '2'; submit_rating = true; }
 					}
 					if (ir.x > 274 && ir.x < 312 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(258, 408, rate_3_img, 0, 2, 2, 0xFFFFFFFF);
+						GRRLIB_DrawImg(208, 400, rate_3_img, 0, 2, 2, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '3'; submit_rating = true; }
 					}
 					if (ir.x > 312 && ir.x < 351 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(258, 408, rate_4_img, 0, 2, 2, 0xFFFFFFFF);
+						GRRLIB_DrawImg(208, 400, rate_4_img, 0, 2, 2, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '4'; submit_rating = true; }
 					}
 					if (ir.x > 351 && ir.x < 390 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(258, 408, rate_5_img, 0, 2, 2, 0xFFFFFFFF);
+						GRRLIB_DrawImg(208, 400, rate_5_img, 0, 2, 2, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '5'; submit_rating = true; }
 					}
 				}
@@ -2636,10 +2636,10 @@ int main(int argc, char **argv) {
 					help_section = 1;
 				}
 
-				GRRLIB_DrawImg(452, 395, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
+				GRRLIB_DrawImg(452, 432, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
 				if (ir.x > 430 && ir.x < 468 && ir.y > 400 && ir.y < 430) {
 					doRumble = true;
-					GRRLIB_DrawImg(452, 395, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(452, 432, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
 					if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 						help_section = 1;
 					}
@@ -2698,10 +2698,10 @@ int main(int argc, char **argv) {
 					help_section = 0;
 				}
 
-				GRRLIB_DrawImg(300, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
+				GRRLIB_DrawImg(332, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
 				if (ir.x > 285 && ir.x < 322 && ir.y > 400 && ir.y < 430) {
 					doRumble = true;
-					GRRLIB_DrawImg(300, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(332, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
 					if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 						help_section = 0;
 					}
@@ -3289,10 +3289,10 @@ int main(int argc, char **argv) {
 						menu_section = 2;
 					}
 
-					GRRLIB_DrawImg(452, 395, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(452, 432, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 430 && ir.x < 468 && ir.y > 400 && ir.y < 430) {
 						doRumble = true;
-						GRRLIB_DrawImg(452, 395, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(452, 432, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 2;
 						}
@@ -3374,18 +3374,18 @@ int main(int argc, char **argv) {
 						menu_section = 3;
 					}
 
-					GRRLIB_DrawImg(300, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(332, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 285 && ir.x < 322 && ir.y > 400 && ir.y < 430) {
 						doRumble = true;
-						GRRLIB_DrawImg(300, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(332, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 1;
 						}
 					}
-					GRRLIB_DrawImg(452, 395, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(452, 432, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 430 && ir.x < 468 && ir.y > 400 && ir.y < 430) {
 						doRumble = true;
-						GRRLIB_DrawImg(452, 395, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(452, 432, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 3;
 						}
@@ -3465,18 +3465,18 @@ int main(int argc, char **argv) {
 						menu_section = 4;
 					}
 
-					GRRLIB_DrawImg(300, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(332, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 285 && ir.x < 322 && ir.y > 400 && ir.y < 430 && select_repo == false && select_category == false) {
 						doRumble = true;
-						GRRLIB_DrawImg(300, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(332, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 2;
 						}
 					}
-					GRRLIB_DrawImg(452, 395, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(452, 432, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 430 && ir.x < 468 && ir.y > 400 && ir.y < 430 && select_repo == false && select_category == false) {
 						doRumble = true;
-						GRRLIB_DrawImg(452, 395, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(452, 432, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 4;
 						}
@@ -3557,18 +3557,18 @@ int main(int argc, char **argv) {
 						menu_section = 5;
 					}
 
-					GRRLIB_DrawImg(300, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(332, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 285 && ir.x < 322 && ir.y > 400 && ir.y < 430 && select_sort == false) {
 						doRumble = true;
-						GRRLIB_DrawImg(300, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(332, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 3;
 						}
 					}
-					GRRLIB_DrawImg(452, 395, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(452, 432, down_clear_img, 270, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 430 && ir.x < 468 && ir.y > 400 && ir.y < 430 && select_sort == false) {
 						doRumble = true;
-						GRRLIB_DrawImg(452, 395, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(452, 432, down_clear_highlight_img, 270, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 5;
 						}
@@ -3601,10 +3601,10 @@ int main(int argc, char **argv) {
 						menu_section = 4;
 					}
 
-					GRRLIB_DrawImg(300, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
+					GRRLIB_DrawImg(332, 395, down_clear_img, 90, 1, 1, 0xFFFFFFFF);
 					if (ir.x > 285 && ir.x < 322 && ir.y > 400 && ir.y < 430) {
 						doRumble = true;
-						GRRLIB_DrawImg(300, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
+						GRRLIB_DrawImg(332, 395, down_clear_highlight_img, 90, 1, 1, 0xFFFFFFFF);
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) {
 							menu_section = 4;
 						}
