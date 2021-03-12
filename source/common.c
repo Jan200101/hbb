@@ -199,7 +199,7 @@ char temp_name[100];
 char uppername[100];
 
 int hbb_string_len = 0;
-
+int hbb_null_len = 0;
 bool sd_mounted = false;
 bool usb_mounted = false;
 
@@ -3471,7 +3471,6 @@ void check_temp_files() {
 						printf("\n");
 					}
 				}
-				unzipArchive("", "");
 			}
 			remove_file("sd:/apps/homebrew_browser/temp_files.zip");
 			hbb_updating = false;
@@ -4344,7 +4343,7 @@ s32 request_list() {
 			return -1;
 		}
 
-		char cmd_line [2000];
+		char cmd_line [5000];
 		int array_count = 0;
 		int line_number = -1;
 		bool add_to_list = true;
@@ -4844,24 +4843,30 @@ s32 request_list() {
 
 						}
 
-						strncpy(homebrew_list[array_count].app_name, cmd_line, strlen(cmd_line) - hbb_string_len);
-						homebrew_list[array_count].app_name[strlen(cmd_line) - hbb_string_len] = '\0';
+						hbb_null_len = (strlen(cmd_line) - hbb_string_len + 1) > sizeof(homebrew_list[array_count].app_name) ? sizeof(homebrew_list[array_count].app_name) : strlen(cmd_line) - hbb_string_len + 1;
+
+						strncpy(homebrew_list[array_count].app_name, cmd_line, hbb_null_len);
+						homebrew_list[array_count].app_name[hbb_null_len - 1] = '\0';
 						//printf("%s\n", homebrew_list[array_count].app_name);
 						line_number++;
 					}
 
 					// Author
 					else if (line_number == 2) {
-						strncpy(homebrew_list[array_count].app_author, cmd_line, strlen(cmd_line) - hbb_string_len);
-						homebrew_list[array_count].app_author[strlen(cmd_line) - hbb_string_len] = '\0';
+						hbb_null_len = (strlen(cmd_line) - hbb_string_len + 1) > sizeof(homebrew_list[array_count].app_author) ? sizeof(homebrew_list[array_count].app_author) : strlen(cmd_line) - hbb_string_len + 1;
+
+						strncpy(homebrew_list[array_count].app_author, cmd_line, hbb_null_len);
+						homebrew_list[array_count].app_author[hbb_null_len - 1] = '\0';
 						//printf("%s\n", homebrew_list[array_count].app_author);
 						line_number++;
 					}
 
 					// Version
 					else if (line_number == 3) {
-						strncpy(homebrew_list[array_count].app_version, cmd_line, strlen(cmd_line) - hbb_string_len);
-						homebrew_list[array_count].app_version[strlen(cmd_line) - hbb_string_len] = '\0';
+						hbb_null_len = (strlen(cmd_line) - hbb_string_len + 1) > sizeof(homebrew_list[array_count].app_version) ? sizeof(homebrew_list[array_count].app_version) : strlen(cmd_line) - hbb_string_len + 1;
+
+						strncpy(homebrew_list[array_count].app_version, cmd_line, hbb_null_len);
+						homebrew_list[array_count].app_version[hbb_null_len - 1] = '\0';
 						//printf("%s\n", homebrew_list[array_count].app_version);
 						line_number++;
 					}
@@ -4875,16 +4880,20 @@ s32 request_list() {
 
 					// Short Description
 					else if (line_number == 5) {
-						strncpy(homebrew_list[array_count].app_short_description, cmd_line, strlen(cmd_line) - hbb_string_len);
-						homebrew_list[array_count].app_short_description[strlen(cmd_line) - hbb_string_len] = '\0';
+						hbb_null_len = (strlen(cmd_line) - hbb_string_len + 1) > sizeof(homebrew_list[array_count].app_short_description) ? sizeof(homebrew_list[array_count].app_short_description) : strlen(cmd_line) - hbb_string_len + 1;
+
+						strncpy(homebrew_list[array_count].app_short_description, cmd_line, hbb_null_len);
+						homebrew_list[array_count].app_short_description[hbb_null_len - 1] = '\0';
 						//printf("%s\n", homebrew_list[array_count].app_short_description);
 						line_number++;
 					}
 
 					// Description
 					else if (line_number == 6) {
-						strncpy(homebrew_list[array_count].app_description, cmd_line, strlen(cmd_line) - hbb_string_len);
-						homebrew_list[array_count].app_description[strlen(cmd_line) - hbb_string_len] = '\0';
+						hbb_null_len = (strlen(cmd_line) - hbb_string_len + 1) > sizeof(homebrew_list[array_count].app_description) ? sizeof(homebrew_list[array_count].app_description) : strlen(cmd_line) - hbb_string_len;
+
+						strncpy(homebrew_list[array_count].app_description, cmd_line, hbb_null_len);
+						homebrew_list[array_count].app_description[hbb_null_len - 1] = '\0';
 						//printf("%s\n", homebrew_list[array_count].app_description);
 						line_number = 0;
 						array_count++;

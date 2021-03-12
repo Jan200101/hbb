@@ -844,11 +844,31 @@ int main(int argc, char **argv) {
 
 		// Refresh list
 		if (refresh_list != start) {
-			free(icon1_img);
-			free(icon2_img);
-			free(icon3_img);
-			free(icon4_img);
-			free(icon5_img);
+			if (icon1_img)
+			{
+				free(icon1_img->data);
+				free(icon1_img);
+			}
+			if (icon2_img)
+			{
+				free(icon2_img->data);
+				free(icon2_img);
+			}
+			if (icon3_img)
+			{
+				free(icon3_img->data);
+				free(icon3_img);
+			}
+			if (icon4_img)
+			{
+				free(icon4_img->data);
+				free(icon4_img);
+			}
+			if (icon5_img)
+			{
+				free(icon5_img->data);
+				free(icon5_img);
+			}
 
 			// Load images as needed, store them into memory as well as text
 			int c;
@@ -2017,14 +2037,15 @@ int main(int argc, char **argv) {
 				strftime (timebuf,50,"%d %b %Y",timeinfo);
 				str_res_date = GRRLIB_TextToTexture(timebuf, FONTSIZE_SMALLER, COLOUR_BLUE);
 
-				char text_description[500];
+				const int text_size = sizeof(homebrew_list[0].app_description);
+				char text_description[text_size];
 				strcpy(text_description, homebrew_list[current_app].app_description);
 
 				int s;
 				int l = 0;
-				for(s = strlen(text_description); s < 400; s++) {
+				for(s = strlen(text_description); s < text_size; s++) {
 					text_description[s] = text_white[0];
-					l = s;
+					l = text_size > s ? s : text_size;
 				}
 				text_description[l] = '\0';
 
@@ -2150,44 +2171,71 @@ int main(int argc, char **argv) {
 
 			if ((download_in_progress == false && extract_in_progress == false && delete_in_progress == false && rating_in_progress == false) || (strcmp (store_homebrew_list[0].name, homebrew_list[current_app].name) != 0 && rating_in_progress == false)) {
 
-				// Ratings
-				if (homebrew_list[current_app].app_rating == 0) {
-					GRRLIB_DrawImg(70, 400, rate_0_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (homebrew_list[current_app].app_rating == 1) {
-					GRRLIB_DrawImg(70, 400, rate_1_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (homebrew_list[current_app].app_rating == 2) {
-					GRRLIB_DrawImg(70, 400, rate_2_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (homebrew_list[current_app].app_rating == 3) {
-					GRRLIB_DrawImg(70, 400, rate_3_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (homebrew_list[current_app].app_rating == 4) {
-					GRRLIB_DrawImg(70, 400, rate_4_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (homebrew_list[current_app].app_rating == 5) {
-					GRRLIB_DrawImg(70, 400, rate_5_img, 0, 1, 1, 0xFFFFFFFF);
-				}
+				{
+					// ratings
+					GRRLIB_texImg *rate_img = NULL;
+					switch (homebrew_list[current_app].app_rating)
+					{
+						case 0:
+						// there is a chance app_rating corrupts so lets just treat all bad cases as 0
+						default:
+							rate_img = rate_0_img;
+							break;
 
-				int user_rating = atoi(homebrew_list[current_app].user_rating);
-				if (user_rating == 0 || user_rating == -1) {
-					GRRLIB_DrawImg(180, 400, rate_0_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (user_rating == 1) {
-					GRRLIB_DrawImg(180, 400, rate_1_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (user_rating == 2) {
-					GRRLIB_DrawImg(180, 400, rate_2_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (user_rating == 3) {
-					GRRLIB_DrawImg(180, 400, rate_3_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (user_rating == 4) {
-					GRRLIB_DrawImg(180, 400, rate_4_img, 0, 1, 1, 0xFFFFFFFF);
-				}
-				if (user_rating == 5) {
-					GRRLIB_DrawImg(180, 400, rate_5_img, 0, 1, 1, 0xFFFFFFFF);
+						case 1:
+							rate_img = rate_1_img;
+							break;
+
+						case 2:
+							rate_img = rate_2_img;
+							break;
+
+						case 3:
+							rate_img = rate_3_img;
+							break;
+
+						case 4:
+							rate_img = rate_4_img;
+							break;
+
+						case 5:
+							rate_img = rate_5_img;
+							break;
+
+					}
+
+					GRRLIB_DrawImg(70, 400, rate_img, 0, 1, 1, 0xFFFFFFFF);
+
+					// user rating
+					switch (atoi(homebrew_list[current_app].user_rating))
+					{
+						case -1:
+						case 0:
+							rate_img = rate_0_img;
+							break;
+
+						case 1:
+							rate_img = rate_1_img;
+							break;
+
+						case 2:
+							rate_img = rate_2_img;
+							break;
+
+						case 3:
+							rate_img = rate_3_img;
+							break;
+
+						case 4:
+							rate_img = rate_4_img;
+							break;
+
+						case 5:
+							rate_img = rate_5_img;
+							break;
+					}
+
+					GRRLIB_DrawImg(180, 400, rate_img, 0, 1, 1, 0xFFFFFFFF);
 				}
 
 				// Download or updated enabled?
