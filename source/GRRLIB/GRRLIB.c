@@ -1,6 +1,6 @@
 #include "GRRLIB.h"
 
-#include "ttf_font.h"
+#include "ttf_font_ttf.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
@@ -18,7 +18,7 @@ void GRRLIB_InitFreetype(void) {
 		exit(0);
 	}
 
-	error = FT_New_Memory_Face(ftLibrary, ttf_font, ttf_font_size, 0, &ftFace);
+	error = FT_New_Memory_Face(ftLibrary, ttf_font_ttf, ttf_font_ttf_size, 0, &ftFace);
 	/* Note: You could also directly load a font from the SD card like this:
 	error = FT_New_Face(ftLibrary, "fat3:/apps/myapp/font.ttf", 0, &ftFace); */
 	

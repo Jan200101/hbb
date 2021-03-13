@@ -32,140 +32,140 @@ ftpii Source Code Copyright (C) 2008 Joseph Jordan <joe.ftpii@psychlaw.com.au>
 #include "unzip/miniunz.h"
 #include "common.h"
 #include "GRRLIB/GRRLIB.h"
-#include "GRRLIB_font1.h"
+#include "GRRLIB_font1_png.h"
 #include <dirent.h>
 #include <sys/statvfs.h>
 
-#include "mouse.h"
-#include "about_blank.h"
-#include "rate_0.h"
-#include "rate_1.h"
-#include "rate_2.h"
-#include "rate_3.h"
-#include "rate_4.h"
-#include "rate_5.h"
-#include "download_button.h"
-#include "download_button_highlight.h"
-#include "delete_button.h"
-#include "delete_button_highlight.h"
-#include "control_wiimote.h"
-#include "control_wiimote_2.h"
-#include "control_wiimote_3.h"
-#include "control_wiimote_4.h"
-#include "control_nunchuck.h"
-#include "control_classic.h"
-#include "control_gcn.h"
-#include "control_keyboard.h"
-#include "control_zapper.h"
-#include "apps_table.h"
-#include "apps_table_blank.h"
-#include "apps_bottom.h"
-#include "apps_top.h"
-#include "apps_top2.h"
-#include "background.h"
-#include "blue_light.h"
-#include "blue_light_small.h"
-#include "blue_dark.h"
-#include "blue_dark_small.h"
-#include "blue_dark_small2.h"
-#include "no_image.h"
-#include "date.h"
-#include "date_highlight.h"
-#include "star.h"
-#include "star_highlight.h"
-#include "thumbs_up.h"
-#include "thumbs_up_highlight.h"
-#include "app_plus.h"
-#include "app_question.h"
-#include "app_tick.h"
-#include "app_tick_small.h"
-#include "app_minus.h"
-#include "app_new.h"
-#include "help_highlight.h"
-#include "sd_card_highlight.h"
-#include "cat_all.h"
-#include "cat_demo.h"
-#include "cat_demo_highlight.h"
-#include "cat_emulator.h"
-#include "cat_emulator_highlight.h"
-#include "cat_games.h"
-#include "cat_games_highlight.h"
-#include "cat_media.h"
-#include "cat_media_highlight.h"
-#include "cat_utilities.h"
-#include "cat_utilities_highlight.h"
-#include "down.h"
-#include "down_highlight.h"
-#include "down_clear.h"
-#include "down_clear_highlight.h"
-#include "blue_progress.h"
-#include "download_frame.h"
-#include "blank.h"
-#include "sort_arrow_down.h"
-#include "sort_arrow_up.h"
-#include "update.h"
-#include "update_highlight.h"
-//#include "blade.h"
-#include "help_about.h"
-#include "help_about_2.h"
-#include "help_apps_information.h"
-#include "help_apps_information_2.h"
-#include "help_apps_listing.h"
-#include "help_controller.h"
-#include "help_download_update.h"
-#include "help_download_update_2.h"
-#include "help_download_update_3.h"
-#include "help_queue.h"
-#include "help_queue_2.h"
-#include "help_queue_3.h"
-#include "help_ratings.h"
-#include "help_sorting.h"
-#include "help_sorting_2.h"
-#include "help_apps_installed.h"
-#include "help_settings.h"
-#include "help_settings_2.h"
-#include "help_settings_3.h"
-#include "help_settings_4.h"
-#include "help_settings_5.h"
-#include "help_settings_6.h"
-#include "help_settings_7.h"
-#include "gear_bg.h"
-#include "guy_menu.h"
-#include "guy_settings.h"
-#include "guy_help.h"
-#include "menu_loader.h"
-#include "menu_loader_highlight.h"
-#include "menu_reboot.h"
-#include "menu_reboot_highlight.h"
-#include "menu_settings.h"
-#include "menu_settings_highlight.h"
-#include "setting_cross.h"
-#include "tooltip_help.h"
-#include "help_bg.h"
-#include "tool_tip_installedapps.h"
-#include "tool_tip_queue.h"
-#include "tool_tip_sort_date.h"
-#include "tool_tip_sort_name.h"
-#include "tool_tip_sort_downloads.h"
-#include "tool_tip_sort_rating.h"
-#include "version.h"
-#include "tool_tip_download_apps.h"
-#include "tool_tip_update_apps.h"
-#include "cancel_download_prompt.h"
-#include "button_no.h"
-#include "button_no_highlight.h"
-#include "button_yes.h"
-#include "button_yes_highlight.h"
-#include "app_download.h"
-#include "apps_updated.h"
-#include "updated_close.h"
-#include "updated_close_highlight.h"
-#include "name.h"
-#include "name_highlight.h"
-#include "apps_repo.h"
-#include "apps_start_cat.h"
-#include "apps_start_sort.h"
-#include "arrow.h"
+#include "mouse_png.h"
+#include "about_blank_png.h"
+#include "rate_0_png.h"
+#include "rate_1_png.h"
+#include "rate_2_png.h"
+#include "rate_3_png.h"
+#include "rate_4_png.h"
+#include "rate_5_png.h"
+#include "download_button_png.h"
+#include "download_button_highlight_png.h"
+#include "delete_button_png.h"
+#include "delete_button_highlight_png.h"
+#include "control_wiimote_png.h"
+#include "control_wiimote_2_png.h"
+#include "control_wiimote_3_png.h"
+#include "control_wiimote_4_png.h"
+#include "control_nunchuck_png.h"
+#include "control_classic_png.h"
+#include "control_gcn_png.h"
+#include "control_keyboard_png.h"
+#include "control_zapper_png.h"
+#include "apps_table_png.h"
+#include "apps_table_blank_png.h"
+#include "apps_bottom_png.h"
+#include "apps_top_png.h"
+#include "apps_top2_png.h"
+#include "background_png.h"
+#include "blue_light_png.h"
+#include "blue_light_small_png.h"
+#include "blue_dark_png.h"
+#include "blue_dark_small_png.h"
+#include "blue_dark_small2_png.h"
+#include "no_image_png.h"
+#include "date_png.h"
+#include "date_highlight_png.h"
+#include "star_png.h"
+#include "star_highlight_png.h"
+#include "thumbs_up_png.h"
+#include "thumbs_up_highlight_png.h"
+#include "app_plus_png.h"
+#include "app_question_png.h"
+#include "app_tick_png.h"
+#include "app_tick_small_png.h"
+#include "app_minus_png.h"
+#include "app_new_png.h"
+#include "help_highlight_png.h"
+#include "sd_card_highlight_png.h"
+#include "cat_all_png.h"
+#include "cat_demo_png.h"
+#include "cat_demo_highlight_png.h"
+#include "cat_emulator_png.h"
+#include "cat_emulator_highlight_png.h"
+#include "cat_games_png.h"
+#include "cat_games_highlight_png.h"
+#include "cat_media_png.h"
+#include "cat_media_highlight_png.h"
+#include "cat_utilities_png.h"
+#include "cat_utilities_highlight_png.h"
+#include "down_png.h"
+#include "down_highlight_png.h"
+#include "down_clear_png.h"
+#include "down_clear_highlight_png.h"
+#include "blue_progress_png.h"
+#include "download_frame_png.h"
+#include "blank_png.h"
+#include "sort_arrow_down_png.h"
+#include "sort_arrow_up_png.h"
+#include "update_png.h"
+#include "update_highlight_png.h"
+//#include "blade_png.h"
+#include "help_about_png.h"
+#include "help_about_2_png.h"
+#include "help_apps_information_png.h"
+#include "help_apps_information_2_png.h"
+#include "help_apps_listing_png.h"
+#include "help_controller_png.h"
+#include "help_download_update_png.h"
+#include "help_download_update_2_png.h"
+#include "help_download_update_3_png.h"
+#include "help_queue_png.h"
+#include "help_queue_2_png.h"
+#include "help_queue_3_png.h"
+#include "help_ratings_png.h"
+#include "help_sorting_png.h"
+#include "help_sorting_2_png.h"
+#include "help_apps_installed_png.h"
+#include "help_settings_png.h"
+#include "help_settings_2_png.h"
+#include "help_settings_3_png.h"
+#include "help_settings_4_png.h"
+#include "help_settings_5_png.h"
+#include "help_settings_6_png.h"
+#include "help_settings_7_png.h"
+#include "gear_bg_png.h"
+#include "guy_menu_png.h"
+#include "guy_settings_png.h"
+#include "guy_help_png.h"
+#include "menu_loader_png.h"
+#include "menu_loader_highlight_png.h"
+#include "menu_reboot_png.h"
+#include "menu_reboot_highlight_png.h"
+#include "menu_settings_png.h"
+#include "menu_settings_highlight_png.h"
+#include "setting_cross_png.h"
+#include "tooltip_help_png.h"
+#include "help_bg_png.h"
+#include "tool_tip_installedapps_png.h"
+#include "tool_tip_queue_png.h"
+#include "tool_tip_sort_date_png.h"
+#include "tool_tip_sort_name_png.h"
+#include "tool_tip_sort_downloads_png.h"
+#include "tool_tip_sort_rating_png.h"
+#include "version_png.h"
+#include "tool_tip_download_apps_png.h"
+#include "tool_tip_update_apps_png.h"
+#include "cancel_download_prompt_png.h"
+#include "button_no_png.h"
+#include "button_no_highlight_png.h"
+#include "button_yes_png.h"
+#include "button_yes_highlight_png.h"
+#include "app_download_png.h"
+#include "apps_updated_png.h"
+#include "updated_close_png.h"
+#include "updated_close_highlight_png.h"
+#include "name_png.h"
+#include "name_highlight_png.h"
+#include "apps_repo_png.h"
+#include "apps_start_cat_png.h"
+#include "apps_start_sort_png.h"
+#include "arrow_png.h"
 
 #include "GRRLIB/GRRLIB.h"
 
@@ -596,139 +596,139 @@ int main(int argc, char **argv) {
 	GRRLIB_texImg *str_sort_3 = GRRLIB_TextToTexture("Rating", FONTSIZE_SMALL1, 0x575757);
 	GRRLIB_texImg *str_sort_4 = GRRLIB_TextToTexture("Downloads", FONTSIZE_SMALL1, 0x575757);
 
-	GRRLIB_texImg *mouse_img=GRRLIB_LoadTexture(mouse);
+	GRRLIB_texImg *mouse_img=GRRLIB_LoadTexture(mouse_png);
 
-	GRRLIB_texImg *about_blank_img=GRRLIB_LoadTexture(about_blank);
-	GRRLIB_texImg *rate_0_img=GRRLIB_LoadTexture(rate_0);
-	GRRLIB_texImg *rate_1_img=GRRLIB_LoadTexture(rate_1);
-	GRRLIB_texImg *rate_2_img=GRRLIB_LoadTexture(rate_2);
-	GRRLIB_texImg *rate_3_img=GRRLIB_LoadTexture(rate_3);
-	GRRLIB_texImg *rate_4_img=GRRLIB_LoadTexture(rate_4);
-	GRRLIB_texImg *rate_5_img=GRRLIB_LoadTexture(rate_5);
-	GRRLIB_texImg *download_button_img=GRRLIB_LoadTexture(download_button);
-	GRRLIB_texImg *download_button_highlight_img=GRRLIB_LoadTexture(download_button_highlight);
-	GRRLIB_texImg *delete_button_img=GRRLIB_LoadTexture(delete_button);
-	GRRLIB_texImg *delete_button_highlight_img=GRRLIB_LoadTexture(delete_button_highlight);
-	GRRLIB_texImg *control_wiimote_img=GRRLIB_LoadTexture(control_wiimote);
-	GRRLIB_texImg *control_wiimote_2_img=GRRLIB_LoadTexture(control_wiimote_2);
-	GRRLIB_texImg *control_wiimote_3_img=GRRLIB_LoadTexture(control_wiimote_3);
-	GRRLIB_texImg *control_wiimote_4_img=GRRLIB_LoadTexture(control_wiimote_4);
-	GRRLIB_texImg *control_nunchuck_img=GRRLIB_LoadTexture(control_nunchuck);
-	GRRLIB_texImg *control_classic_img=GRRLIB_LoadTexture(control_classic);
-	GRRLIB_texImg *control_gcn_img=GRRLIB_LoadTexture(control_gcn);
-	GRRLIB_texImg *control_keyboard_img=GRRLIB_LoadTexture(control_keyboard);
-	GRRLIB_texImg *control_zapper_img=GRRLIB_LoadTexture(control_zapper);
-	GRRLIB_texImg *apps_table_img=GRRLIB_LoadTexture(apps_table);
-	GRRLIB_texImg *apps_table_blank_img=GRRLIB_LoadTexture(apps_table_blank);
-	GRRLIB_texImg *apps_bottom_img=GRRLIB_LoadTexture(apps_bottom);
-	GRRLIB_texImg *apps_top_img=GRRLIB_LoadTexture(apps_top);
-	GRRLIB_texImg *apps_top2_img=GRRLIB_LoadTexture(apps_top2);
-	GRRLIB_texImg *background_img=GRRLIB_LoadTexture(background);
-	GRRLIB_texImg *blue_light_img=GRRLIB_LoadTexture(blue_light);
-	GRRLIB_texImg *blue_light_small_img=GRRLIB_LoadTexture(blue_light_small);
-	GRRLIB_texImg *blue_dark_img=GRRLIB_LoadTexture(blue_dark);
-	GRRLIB_texImg *blue_dark_small_img=GRRLIB_LoadTexture(blue_dark_small);
-	GRRLIB_texImg *blue_dark_small2_img=GRRLIB_LoadTexture(blue_dark_small2);
-	GRRLIB_texImg *date_img=GRRLIB_LoadTexture(date);
-	GRRLIB_texImg *date_highlight_img=GRRLIB_LoadTexture(date_highlight);
-	GRRLIB_texImg *star_img=GRRLIB_LoadTexture(star);
-	GRRLIB_texImg *star_highlight_img=GRRLIB_LoadTexture(star_highlight);
-	GRRLIB_texImg *name_img=GRRLIB_LoadTexture(name);
-	GRRLIB_texImg *name_highlight_img=GRRLIB_LoadTexture(name_highlight);
-	GRRLIB_texImg *thumbs_up_img=GRRLIB_LoadTexture(thumbs_up);
-	GRRLIB_texImg *thumbs_up_highlight_img=GRRLIB_LoadTexture(thumbs_up_highlight);
-	GRRLIB_texImg *app_plus_img=GRRLIB_LoadTexture(app_plus);
-	GRRLIB_texImg *app_minus_img=GRRLIB_LoadTexture(app_minus);
-	GRRLIB_texImg *app_question_img=GRRLIB_LoadTexture(app_question);
-	GRRLIB_texImg *app_tick_img=GRRLIB_LoadTexture(app_tick);
-	GRRLIB_texImg *app_tick_small_img=GRRLIB_LoadTexture(app_tick_small);
-	GRRLIB_texImg *app_new_img=GRRLIB_LoadTexture(app_new);
-	GRRLIB_texImg *help_highlight_img=GRRLIB_LoadTexture(help_highlight);
-	GRRLIB_texImg *sd_card_highlight_img=GRRLIB_LoadTexture(sd_card_highlight);
-	GRRLIB_texImg *down_img=GRRLIB_LoadTexture(down);
-	GRRLIB_texImg *down_highlight_img=GRRLIB_LoadTexture(down_highlight);
-	GRRLIB_texImg *down_clear_img=GRRLIB_LoadTexture(down_clear);
-	GRRLIB_texImg *down_clear_highlight_img=GRRLIB_LoadTexture(down_clear_highlight);
-	GRRLIB_texImg *blue_progress_img=GRRLIB_LoadTexture(blue_progress);
-	GRRLIB_texImg *download_frame_img=GRRLIB_LoadTexture(download_frame);
-	GRRLIB_texImg *sort_arrow_down_img=GRRLIB_LoadTexture(sort_arrow_down);
-	GRRLIB_texImg *sort_arrow_up_img=GRRLIB_LoadTexture(sort_arrow_up);
-	GRRLIB_texImg *update_img=GRRLIB_LoadTexture(update);
-	GRRLIB_texImg *update_highlight_img=GRRLIB_LoadTexture(update_highlight);
+	GRRLIB_texImg *about_blank_img=GRRLIB_LoadTexture(about_blank_png);
+	GRRLIB_texImg *rate_0_img=GRRLIB_LoadTexture(rate_0_png);
+	GRRLIB_texImg *rate_1_img=GRRLIB_LoadTexture(rate_1_png);
+	GRRLIB_texImg *rate_2_img=GRRLIB_LoadTexture(rate_2_png);
+	GRRLIB_texImg *rate_3_img=GRRLIB_LoadTexture(rate_3_png);
+	GRRLIB_texImg *rate_4_img=GRRLIB_LoadTexture(rate_4_png);
+	GRRLIB_texImg *rate_5_img=GRRLIB_LoadTexture(rate_5_png);
+	GRRLIB_texImg *download_button_img=GRRLIB_LoadTexture(download_button_png);
+	GRRLIB_texImg *download_button_highlight_img=GRRLIB_LoadTexture(download_button_highlight_png);
+	GRRLIB_texImg *delete_button_img=GRRLIB_LoadTexture(delete_button_png);
+	GRRLIB_texImg *delete_button_highlight_img=GRRLIB_LoadTexture(delete_button_highlight_png);
+	GRRLIB_texImg *control_wiimote_img=GRRLIB_LoadTexture(control_wiimote_png);
+	GRRLIB_texImg *control_wiimote_2_img=GRRLIB_LoadTexture(control_wiimote_2_png);
+	GRRLIB_texImg *control_wiimote_3_img=GRRLIB_LoadTexture(control_wiimote_3_png);
+	GRRLIB_texImg *control_wiimote_4_img=GRRLIB_LoadTexture(control_wiimote_4_png);
+	GRRLIB_texImg *control_nunchuck_img=GRRLIB_LoadTexture(control_nunchuck_png);
+	GRRLIB_texImg *control_classic_img=GRRLIB_LoadTexture(control_classic_png);
+	GRRLIB_texImg *control_gcn_img=GRRLIB_LoadTexture(control_gcn_png);
+	GRRLIB_texImg *control_keyboard_img=GRRLIB_LoadTexture(control_keyboard_png);
+	GRRLIB_texImg *control_zapper_img=GRRLIB_LoadTexture(control_zapper_png);
+	GRRLIB_texImg *apps_table_img=GRRLIB_LoadTexture(apps_table_png);
+	GRRLIB_texImg *apps_table_blank_img=GRRLIB_LoadTexture(apps_table_blank_png);
+	GRRLIB_texImg *apps_bottom_img=GRRLIB_LoadTexture(apps_bottom_png);
+	GRRLIB_texImg *apps_top_img=GRRLIB_LoadTexture(apps_top_png);
+	GRRLIB_texImg *apps_top2_img=GRRLIB_LoadTexture(apps_top2_png);
+	GRRLIB_texImg *background_img=GRRLIB_LoadTexture(background_png);
+	GRRLIB_texImg *blue_light_img=GRRLIB_LoadTexture(blue_light_png);
+	GRRLIB_texImg *blue_light_small_img=GRRLIB_LoadTexture(blue_light_small_png);
+	GRRLIB_texImg *blue_dark_img=GRRLIB_LoadTexture(blue_dark_png);
+	GRRLIB_texImg *blue_dark_small_img=GRRLIB_LoadTexture(blue_dark_small_png);
+	GRRLIB_texImg *blue_dark_small2_img=GRRLIB_LoadTexture(blue_dark_small2_png);
+	GRRLIB_texImg *date_img=GRRLIB_LoadTexture(date_png);
+	GRRLIB_texImg *date_highlight_img=GRRLIB_LoadTexture(date_highlight_png);
+	GRRLIB_texImg *star_img=GRRLIB_LoadTexture(star_png);
+	GRRLIB_texImg *star_highlight_img=GRRLIB_LoadTexture(star_highlight_png);
+	GRRLIB_texImg *name_img=GRRLIB_LoadTexture(name_png);
+	GRRLIB_texImg *name_highlight_img=GRRLIB_LoadTexture(name_highlight_png);
+	GRRLIB_texImg *thumbs_up_img=GRRLIB_LoadTexture(thumbs_up_png);
+	GRRLIB_texImg *thumbs_up_highlight_img=GRRLIB_LoadTexture(thumbs_up_highlight_png);
+	GRRLIB_texImg *app_plus_img=GRRLIB_LoadTexture(app_plus_png);
+	GRRLIB_texImg *app_minus_img=GRRLIB_LoadTexture(app_minus_png);
+	GRRLIB_texImg *app_question_img=GRRLIB_LoadTexture(app_question_png);
+	GRRLIB_texImg *app_tick_img=GRRLIB_LoadTexture(app_tick_png);
+	GRRLIB_texImg *app_tick_small_img=GRRLIB_LoadTexture(app_tick_small_png);
+	GRRLIB_texImg *app_new_img=GRRLIB_LoadTexture(app_new_png);
+	GRRLIB_texImg *help_highlight_img=GRRLIB_LoadTexture(help_highlight_png);
+	GRRLIB_texImg *sd_card_highlight_img=GRRLIB_LoadTexture(sd_card_highlight_png);
+	GRRLIB_texImg *down_img=GRRLIB_LoadTexture(down_png);
+	GRRLIB_texImg *down_highlight_img=GRRLIB_LoadTexture(down_highlight_png);
+	GRRLIB_texImg *down_clear_img=GRRLIB_LoadTexture(down_clear_png);
+	GRRLIB_texImg *down_clear_highlight_img=GRRLIB_LoadTexture(down_clear_highlight_png);
+	GRRLIB_texImg *blue_progress_img=GRRLIB_LoadTexture(blue_progress_png);
+	GRRLIB_texImg *download_frame_img=GRRLIB_LoadTexture(download_frame_png);
+	GRRLIB_texImg *sort_arrow_down_img=GRRLIB_LoadTexture(sort_arrow_down_png);
+	GRRLIB_texImg *sort_arrow_up_img=GRRLIB_LoadTexture(sort_arrow_up_png);
+	GRRLIB_texImg *update_img=GRRLIB_LoadTexture(update_png);
+	GRRLIB_texImg *update_highlight_img=GRRLIB_LoadTexture(update_highlight_png);
 
-	GRRLIB_texImg *cat_all_img=GRRLIB_LoadTexture(cat_all);
-	GRRLIB_texImg *cat_demo_img=GRRLIB_LoadTexture(cat_demo);
-	GRRLIB_texImg *cat_demo_highlight_img=GRRLIB_LoadTexture(cat_demo_highlight);
-	GRRLIB_texImg *cat_emulator_img=GRRLIB_LoadTexture(cat_emulator);
-	GRRLIB_texImg *cat_emulator_highlight_img=GRRLIB_LoadTexture(cat_emulator_highlight);
-	GRRLIB_texImg *cat_games_img=GRRLIB_LoadTexture(cat_games);
-	GRRLIB_texImg *cat_games_highlight_img=GRRLIB_LoadTexture(cat_games_highlight);
-	GRRLIB_texImg *cat_media_img=GRRLIB_LoadTexture(cat_media);
-	GRRLIB_texImg *cat_media_highlight_img=GRRLIB_LoadTexture(cat_media_highlight);
-	GRRLIB_texImg *cat_utilities_img=GRRLIB_LoadTexture(cat_utilities);
-	GRRLIB_texImg *cat_utilities_highlight_img=GRRLIB_LoadTexture(cat_utilities_highlight);
+	GRRLIB_texImg *cat_all_img=GRRLIB_LoadTexture(cat_all_png);
+	GRRLIB_texImg *cat_demo_img=GRRLIB_LoadTexture(cat_demo_png);
+	GRRLIB_texImg *cat_demo_highlight_img=GRRLIB_LoadTexture(cat_demo_highlight_png);
+	GRRLIB_texImg *cat_emulator_img=GRRLIB_LoadTexture(cat_emulator_png);
+	GRRLIB_texImg *cat_emulator_highlight_img=GRRLIB_LoadTexture(cat_emulator_highlight_png);
+	GRRLIB_texImg *cat_games_img=GRRLIB_LoadTexture(cat_games_png);
+	GRRLIB_texImg *cat_games_highlight_img=GRRLIB_LoadTexture(cat_games_highlight_png);
+	GRRLIB_texImg *cat_media_img=GRRLIB_LoadTexture(cat_media_png);
+	GRRLIB_texImg *cat_media_highlight_img=GRRLIB_LoadTexture(cat_media_highlight_png);
+	GRRLIB_texImg *cat_utilities_img=GRRLIB_LoadTexture(cat_utilities_png);
+	GRRLIB_texImg *cat_utilities_highlight_img=GRRLIB_LoadTexture(cat_utilities_highlight_png);
 
-//	GRRLIB_texImg *blade_img=GRRLIB_LoadTexture(blade);
-	GRRLIB_texImg *help_about_img=GRRLIB_LoadTexture(help_about);
-	GRRLIB_texImg *help_about_2_img=GRRLIB_LoadTexture(help_about_2);
-	GRRLIB_texImg *help_apps_information_img=GRRLIB_LoadTexture(help_apps_information);
-	GRRLIB_texImg *help_apps_information_2_img=GRRLIB_LoadTexture(help_apps_information_2);
-	GRRLIB_texImg *help_apps_listing_img=GRRLIB_LoadTexture(help_apps_listing);
-	GRRLIB_texImg *help_controller_img=GRRLIB_LoadTexture(help_controller);
-	GRRLIB_texImg *help_download_update_img=GRRLIB_LoadTexture(help_download_update);
-	GRRLIB_texImg *help_download_update_2_img=GRRLIB_LoadTexture(help_download_update_2);
-	GRRLIB_texImg *help_download_update_3_img=GRRLIB_LoadTexture(help_download_update_3);
-	GRRLIB_texImg *help_queue_img=GRRLIB_LoadTexture(help_queue);
-	GRRLIB_texImg *help_queue_2_img=GRRLIB_LoadTexture(help_queue_2);
-	GRRLIB_texImg *help_queue_3_img=GRRLIB_LoadTexture(help_queue_3);
-	GRRLIB_texImg *help_ratings_img=GRRLIB_LoadTexture(help_ratings);
-	GRRLIB_texImg *help_sorting_img=GRRLIB_LoadTexture(help_sorting);
-	GRRLIB_texImg *help_sorting_2_img=GRRLIB_LoadTexture(help_sorting_2);
-	GRRLIB_texImg *help_apps_installed_img=GRRLIB_LoadTexture(help_apps_installed);
-	GRRLIB_texImg *help_settings_img=GRRLIB_LoadTexture(help_settings);
-	GRRLIB_texImg *help_settings_2_img=GRRLIB_LoadTexture(help_settings_2);
-	GRRLIB_texImg *help_settings_3_img=GRRLIB_LoadTexture(help_settings_3);
-	GRRLIB_texImg *help_settings_4_img=GRRLIB_LoadTexture(help_settings_4);
-	GRRLIB_texImg *help_settings_5_img=GRRLIB_LoadTexture(help_settings_5);
-	GRRLIB_texImg *help_settings_6_img=GRRLIB_LoadTexture(help_settings_6);
-	GRRLIB_texImg *help_settings_7_img=GRRLIB_LoadTexture(help_settings_7);
+//	GRRLIB_texImg *blade_img=GRRLIB_LoadTexture(blade_png);
+	GRRLIB_texImg *help_about_img=GRRLIB_LoadTexture(help_about_png);
+	GRRLIB_texImg *help_about_2_img=GRRLIB_LoadTexture(help_about_2_png);
+	GRRLIB_texImg *help_apps_information_img=GRRLIB_LoadTexture(help_apps_information_png);
+	GRRLIB_texImg *help_apps_information_2_img=GRRLIB_LoadTexture(help_apps_information_2_png);
+	GRRLIB_texImg *help_apps_listing_img=GRRLIB_LoadTexture(help_apps_listing_png);
+	GRRLIB_texImg *help_controller_img=GRRLIB_LoadTexture(help_controller_png);
+	GRRLIB_texImg *help_download_update_img=GRRLIB_LoadTexture(help_download_update_png);
+	GRRLIB_texImg *help_download_update_2_img=GRRLIB_LoadTexture(help_download_update_2_png);
+	GRRLIB_texImg *help_download_update_3_img=GRRLIB_LoadTexture(help_download_update_3_png);
+	GRRLIB_texImg *help_queue_img=GRRLIB_LoadTexture(help_queue_png);
+	GRRLIB_texImg *help_queue_2_img=GRRLIB_LoadTexture(help_queue_2_png);
+	GRRLIB_texImg *help_queue_3_img=GRRLIB_LoadTexture(help_queue_3_png);
+	GRRLIB_texImg *help_ratings_img=GRRLIB_LoadTexture(help_ratings_png);
+	GRRLIB_texImg *help_sorting_img=GRRLIB_LoadTexture(help_sorting_png);
+	GRRLIB_texImg *help_sorting_2_img=GRRLIB_LoadTexture(help_sorting_2_png);
+	GRRLIB_texImg *help_apps_installed_img=GRRLIB_LoadTexture(help_apps_installed_png);
+	GRRLIB_texImg *help_settings_img=GRRLIB_LoadTexture(help_settings_png);
+	GRRLIB_texImg *help_settings_2_img=GRRLIB_LoadTexture(help_settings_2_png);
+	GRRLIB_texImg *help_settings_3_img=GRRLIB_LoadTexture(help_settings_3_png);
+	GRRLIB_texImg *help_settings_4_img=GRRLIB_LoadTexture(help_settings_4_png);
+	GRRLIB_texImg *help_settings_5_img=GRRLIB_LoadTexture(help_settings_5_png);
+	GRRLIB_texImg *help_settings_6_img=GRRLIB_LoadTexture(help_settings_6_png);
+	GRRLIB_texImg *help_settings_7_img=GRRLIB_LoadTexture(help_settings_7_png);
 
-	GRRLIB_texImg *gear_bg_img=GRRLIB_LoadTexture(gear_bg);
-	GRRLIB_texImg *guy_menu_img=GRRLIB_LoadTexture(guy_menu);
-	GRRLIB_texImg *guy_help_img=GRRLIB_LoadTexture(guy_help);
-	GRRLIB_texImg *guy_settings_img=GRRLIB_LoadTexture(guy_settings);
-	GRRLIB_texImg *menu_loader_img=GRRLIB_LoadTexture(menu_loader);
-	GRRLIB_texImg *menu_loader_highlight_img=GRRLIB_LoadTexture(menu_loader_highlight);
-	GRRLIB_texImg *menu_reboot_img=GRRLIB_LoadTexture(menu_reboot);
-	GRRLIB_texImg *menu_reboot_highlight_img=GRRLIB_LoadTexture(menu_reboot_highlight);
-	GRRLIB_texImg *menu_settings_img=GRRLIB_LoadTexture(menu_settings);
-	GRRLIB_texImg *menu_settings_highlight_img=GRRLIB_LoadTexture(menu_settings_highlight);
-	GRRLIB_texImg *setting_cross_img=GRRLIB_LoadTexture(setting_cross);
-	GRRLIB_texImg *help_bg_img=GRRLIB_LoadTexture(help_bg);
-	GRRLIB_texImg *tooltip_help_img=GRRLIB_LoadTexture(tooltip_help);
+	GRRLIB_texImg *gear_bg_img=GRRLIB_LoadTexture(gear_bg_png);
+	GRRLIB_texImg *guy_menu_img=GRRLIB_LoadTexture(guy_menu_png);
+	GRRLIB_texImg *guy_help_img=GRRLIB_LoadTexture(guy_help_png);
+	GRRLIB_texImg *guy_settings_img=GRRLIB_LoadTexture(guy_settings_png);
+	GRRLIB_texImg *menu_loader_img=GRRLIB_LoadTexture(menu_loader_png);
+	GRRLIB_texImg *menu_loader_highlight_img=GRRLIB_LoadTexture(menu_loader_highlight_png);
+	GRRLIB_texImg *menu_reboot_img=GRRLIB_LoadTexture(menu_reboot_png);
+	GRRLIB_texImg *menu_reboot_highlight_img=GRRLIB_LoadTexture(menu_reboot_highlight_png);
+	GRRLIB_texImg *menu_settings_img=GRRLIB_LoadTexture(menu_settings_png);
+	GRRLIB_texImg *menu_settings_highlight_img=GRRLIB_LoadTexture(menu_settings_highlight_png);
+	GRRLIB_texImg *setting_cross_img=GRRLIB_LoadTexture(setting_cross_png);
+	GRRLIB_texImg *help_bg_img=GRRLIB_LoadTexture(help_bg_png);
+	GRRLIB_texImg *tooltip_help_img=GRRLIB_LoadTexture(tooltip_help_png);
 
-	GRRLIB_texImg *tool_tip_installedapps_img=GRRLIB_LoadTexture(tool_tip_installedapps);
-	GRRLIB_texImg *tool_tip_queue_img=GRRLIB_LoadTexture(tool_tip_queue);
-	GRRLIB_texImg *tool_tip_sort_date_img=GRRLIB_LoadTexture(tool_tip_sort_date);
-	GRRLIB_texImg *tool_tip_sort_name_img=GRRLIB_LoadTexture(tool_tip_sort_name);
-	GRRLIB_texImg *tool_tip_sort_downloads_img=GRRLIB_LoadTexture(tool_tip_sort_downloads);
-	GRRLIB_texImg *tool_tip_sort_rating_img=GRRLIB_LoadTexture(tool_tip_sort_rating);
-	GRRLIB_texImg *tool_tip_download_apps_img=GRRLIB_LoadTexture(tool_tip_download_apps);
-	GRRLIB_texImg *tool_tip_update_apps_img=GRRLIB_LoadTexture(tool_tip_update_apps);
-	GRRLIB_texImg *version_img=GRRLIB_LoadTexture(version);
+	GRRLIB_texImg *tool_tip_installedapps_img=GRRLIB_LoadTexture(tool_tip_installedapps_png);
+	GRRLIB_texImg *tool_tip_queue_img=GRRLIB_LoadTexture(tool_tip_queue_png);
+	GRRLIB_texImg *tool_tip_sort_date_img=GRRLIB_LoadTexture(tool_tip_sort_date_png);
+	GRRLIB_texImg *tool_tip_sort_name_img=GRRLIB_LoadTexture(tool_tip_sort_name_png);
+	GRRLIB_texImg *tool_tip_sort_downloads_img=GRRLIB_LoadTexture(tool_tip_sort_downloads_png);
+	GRRLIB_texImg *tool_tip_sort_rating_img=GRRLIB_LoadTexture(tool_tip_sort_rating_png);
+	GRRLIB_texImg *tool_tip_download_apps_img=GRRLIB_LoadTexture(tool_tip_download_apps_png);
+	GRRLIB_texImg *tool_tip_update_apps_img=GRRLIB_LoadTexture(tool_tip_update_apps_png);
+	GRRLIB_texImg *version_img=GRRLIB_LoadTexture(version_png);
 
-	GRRLIB_texImg *cancel_download_prompt_img=GRRLIB_LoadTexture(cancel_download_prompt);
-	GRRLIB_texImg *button_no_img=GRRLIB_LoadTexture(button_no);
-	GRRLIB_texImg *button_no_highlight_img=GRRLIB_LoadTexture(button_no_highlight);
-	GRRLIB_texImg *button_yes_img=GRRLIB_LoadTexture(button_yes);
-	GRRLIB_texImg *button_yes_highlight_img=GRRLIB_LoadTexture(button_yes_highlight);
-	GRRLIB_texImg *app_download_img=GRRLIB_LoadTexture(app_download);
-	GRRLIB_texImg *apps_updated_img=GRRLIB_LoadTexture(apps_updated);
-	GRRLIB_texImg *updated_close_img=GRRLIB_LoadTexture(updated_close);
-	GRRLIB_texImg *updated_close_highlight_img=GRRLIB_LoadTexture(updated_close_highlight);
-	GRRLIB_texImg *apps_repo_img=GRRLIB_LoadTexture(apps_repo);
-	GRRLIB_texImg *apps_start_cat_img=GRRLIB_LoadTexture(apps_start_cat);
-	GRRLIB_texImg *apps_start_sort_img=GRRLIB_LoadTexture(apps_start_sort);
+	GRRLIB_texImg *cancel_download_prompt_img=GRRLIB_LoadTexture(cancel_download_prompt_png);
+	GRRLIB_texImg *button_no_img=GRRLIB_LoadTexture(button_no_png);
+	GRRLIB_texImg *button_no_highlight_img=GRRLIB_LoadTexture(button_no_highlight_png);
+	GRRLIB_texImg *button_yes_img=GRRLIB_LoadTexture(button_yes_png);
+	GRRLIB_texImg *button_yes_highlight_img=GRRLIB_LoadTexture(button_yes_highlight_png);
+	GRRLIB_texImg *app_download_img=GRRLIB_LoadTexture(app_download_png);
+	GRRLIB_texImg *apps_updated_img=GRRLIB_LoadTexture(apps_updated_png);
+	GRRLIB_texImg *updated_close_img=GRRLIB_LoadTexture(updated_close_png);
+	GRRLIB_texImg *updated_close_highlight_img=GRRLIB_LoadTexture(updated_close_highlight_png);
+	GRRLIB_texImg *apps_repo_img=GRRLIB_LoadTexture(apps_repo_png);
+	GRRLIB_texImg *apps_start_cat_img=GRRLIB_LoadTexture(apps_start_cat_png);
+	GRRLIB_texImg *apps_start_sort_img=GRRLIB_LoadTexture(apps_start_sort_png);
 
 	GRRLIB_texImg *icon1_img = NULL;
 	GRRLIB_texImg *icon2_img = NULL;
@@ -974,28 +974,28 @@ int main(int argc, char **argv) {
 			// Display images
 			if (homebrew_list[start].file_found == 1 && strcmp(homebrew_list[start].name,"000") != 0) {
 				icon1_img=GRRLIB_LoadTexture(homebrew_list[start].content);
-			} else if (strlen(homebrew_list[start].name) >= 3 && strcmp(homebrew_list[start].name,"000") != 0) { icon1_img=GRRLIB_LoadTexture(no_image); }
-			else { icon1_img=GRRLIB_LoadTexture(blank); }
+			} else if (strlen(homebrew_list[start].name) >= 3 && strcmp(homebrew_list[start].name,"000") != 0) { icon1_img=GRRLIB_LoadTexture(no_image_png); }
+			else { icon1_img=GRRLIB_LoadTexture(blank_png); }
 
 			if (homebrew_list[(start+1)].file_found == 1 && strcmp(homebrew_list[(start+1)].name,"000") != 0) {
 				icon2_img=GRRLIB_LoadTexture(homebrew_list[(start+1)].content);
-			} else if (strlen(homebrew_list[(start+1)].name) >= 3 && strcmp(homebrew_list[(start+1)].name,"000") != 0) { icon2_img=GRRLIB_LoadTexture(no_image); }
-			else { icon2_img=GRRLIB_LoadTexture(blank); }
+			} else if (strlen(homebrew_list[(start+1)].name) >= 3 && strcmp(homebrew_list[(start+1)].name,"000") != 0) { icon2_img=GRRLIB_LoadTexture(no_image_png); }
+			else { icon2_img=GRRLIB_LoadTexture(blank_png); }
 
 			if (homebrew_list[(start+2)].file_found == 1 && strcmp(homebrew_list[(start+2)].name,"000") != 0) {
 				icon3_img=GRRLIB_LoadTexture(homebrew_list[(start+2)].content);
-			} else if (strlen(homebrew_list[(start+2)].name) >= 3 && strcmp(homebrew_list[(start+2)].name,"000") != 0) { icon3_img=GRRLIB_LoadTexture(no_image); }
-			else { icon3_img=GRRLIB_LoadTexture(blank); }
+			} else if (strlen(homebrew_list[(start+2)].name) >= 3 && strcmp(homebrew_list[(start+2)].name,"000") != 0) { icon3_img=GRRLIB_LoadTexture(no_image_png); }
+			else { icon3_img=GRRLIB_LoadTexture(blank_png); }
 
 			if (homebrew_list[(start+3)].file_found == 1 && strcmp(homebrew_list[(start+3)].name,"000") != 0) {
 				icon4_img=GRRLIB_LoadTexture(homebrew_list[(start+3)].content);
-			} else if (strlen(homebrew_list[(start+3)].name) >= 3 && strcmp(homebrew_list[(start+3)].name,"000") != 0) { icon4_img=GRRLIB_LoadTexture(no_image); }
-			else { icon4_img=GRRLIB_LoadTexture(blank); }
+			} else if (strlen(homebrew_list[(start+3)].name) >= 3 && strcmp(homebrew_list[(start+3)].name,"000") != 0) { icon4_img=GRRLIB_LoadTexture(no_image_png); }
+			else { icon4_img=GRRLIB_LoadTexture(blank_png); }
 
 			if (strlen(homebrew_list[(start+4)].name) >= 3 && homebrew_list[(start+4)].file_found == 1 && strcmp(homebrew_list[(start+4)].name,"000") != 0) {
 				icon5_img=GRRLIB_LoadTexture(homebrew_list[(start+4)].content);
-			} else if (strlen(homebrew_list[(start+4)].name) >= 3 && strcmp(homebrew_list[(start+4)].name,"000") != 0) { icon5_img=GRRLIB_LoadTexture(no_image); }
-			else { icon5_img=GRRLIB_LoadTexture(blank); }
+			} else if (strlen(homebrew_list[(start+4)].name) >= 3 && strcmp(homebrew_list[(start+4)].name,"000") != 0) { icon5_img=GRRLIB_LoadTexture(no_image_png); }
+			else { icon5_img=GRRLIB_LoadTexture(blank_png); }
 
 			// Name and Descriptions
 			str_name = text_list[start].str_name;
