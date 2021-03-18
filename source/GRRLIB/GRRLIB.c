@@ -13,19 +13,11 @@ static bool BlitGlyph(FT_Bitmap *bitmap, int offset, int top, void *buffer);
 static void BitmapTo4x4RGBA(const unsigned char *src, void *dst, const unsigned int width, const unsigned int height);
 
 void GRRLIB_InitFreetype(void) {
-	unsigned int error = FT_Init_FreeType(&ftLibrary);
-	if (error) {
+	if (FT_Init_FreeType(&ftLibrary)) {
 		exit(0);
 	}
 
-	error = FT_New_Memory_Face(ftLibrary, ttf_font_ttf, ttf_font_ttf_size, 0, &ftFace);
-	/* Note: You could also directly load a font from the SD card like this:
-	error = FT_New_Face(ftLibrary, "fat3:/apps/myapp/font.ttf", 0, &ftFace); */
-	
-	if (error == FT_Err_Unknown_File_Format) {
-		exit(0);
-	} else if (error) {
-		/* Some other error */
+	if (FT_New_Memory_Face(ftLibrary, ttf_font_ttf, ttf_font_ttf_size, 0, &ftFace)) {
 		exit(0);
 	}
 }
@@ -33,12 +25,7 @@ void GRRLIB_InitFreetype(void) {
 // despite the fact that this function allocates to the heap most calls are never freed
 /* Render the text string to a 4x4RGBA texture, return a pointer to this texture */
 GRRLIB_texImg *GRRLIB_TextToTexture(const char *string, unsigned int fontSize, unsigned int fontColour) {
-	unsigned int error = FT_Set_Pixel_Sizes(ftFace, 0, fontSize);
-	if (error) {
-		/* Failed to set the font size to the requested size. 
-		 * You probably should set a default size or something. 
-		 * I'll leave that up to the reader. */
-	}
+	FT_Set_Pixel_Sizes(ftFace, 0, fontSize);
 
 	GRRLIB_texImg *texture = calloc(1, sizeof(GRRLIB_texImg));
 	texture->w = 640;
@@ -79,7 +66,6 @@ GRRLIB_texImg *GRRLIB_TextToTexture(const char *string, unsigned int fontSize, u
 }
 
 static void DrawText(const char *string, unsigned int fontSize, void *buffer) {
-	unsigned int error = 0;
 	int penX = 0;
 	int penY = fontSize;
 	FT_GlyphSlot slot = ftFace->glyph;
@@ -106,9 +92,8 @@ static void DrawText(const char *string, unsigned int fontSize, void *buffer) {
 			FT_Get_Kerning(ftFace, previousGlyph, glyphIndex, FT_KERNING_DEFAULT, &delta);
 			penX += delta.x >> 6;
 		}
-	
-		error = FT_Load_Glyph(ftFace, glyphIndex, FT_LOAD_RENDER);
-		if (error) {
+
+		if (FT_Load_Glyph(ftFace, glyphIndex, FT_LOAD_RENDER)) {
 			/* Whoops, something went wrong trying to load the glyph 
 			 * for this character... you should handle this better */
 			continue;

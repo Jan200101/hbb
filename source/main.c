@@ -38,12 +38,7 @@ ftpii Source Code Copyright (C) 2008 Joseph Jordan <joe.ftpii@psychlaw.com.au>
 
 #include "mouse_png.h"
 #include "about_blank_png.h"
-#include "rate_0_png.h"
-#include "rate_1_png.h"
-#include "rate_2_png.h"
-#include "rate_3_png.h"
-#include "rate_4_png.h"
-#include "rate_5_png.h"
+#include "rate_star_png.h"
 #include "download_button_png.h"
 #include "download_button_highlight_png.h"
 #include "delete_button_png.h"
@@ -599,12 +594,7 @@ int main(int argc, char **argv) {
 	GRRLIB_texImg *mouse_img=GRRLIB_LoadTexture(mouse_png);
 
 	GRRLIB_texImg *about_blank_img=GRRLIB_LoadTexture(about_blank_png);
-	GRRLIB_texImg *rate_0_img=GRRLIB_LoadTexture(rate_0_png);
-	GRRLIB_texImg *rate_1_img=GRRLIB_LoadTexture(rate_1_png);
-	GRRLIB_texImg *rate_2_img=GRRLIB_LoadTexture(rate_2_png);
-	GRRLIB_texImg *rate_3_img=GRRLIB_LoadTexture(rate_3_png);
-	GRRLIB_texImg *rate_4_img=GRRLIB_LoadTexture(rate_4_png);
-	GRRLIB_texImg *rate_5_img=GRRLIB_LoadTexture(rate_5_png);
+	GRRLIB_texImg *rate_star_img=GRRLIB_LoadTexture(rate_star_png);
 	GRRLIB_texImg *download_button_img=GRRLIB_LoadTexture(download_button_png);
 	GRRLIB_texImg *download_button_highlight_img=GRRLIB_LoadTexture(download_button_highlight_png);
 	GRRLIB_texImg *delete_button_img=GRRLIB_LoadTexture(delete_button_png);
@@ -2172,70 +2162,30 @@ int main(int argc, char **argv) {
 			if ((download_in_progress == false && extract_in_progress == false && delete_in_progress == false && rating_in_progress == false) || (strcmp (store_homebrew_list[0].name, homebrew_list[current_app].name) != 0 && rating_in_progress == false)) {
 
 				{
-					// ratings
-					GRRLIB_texImg *rate_img = NULL;
-					switch (homebrew_list[current_app].app_rating)
+					int rating;
+
+					rating = homebrew_list[current_app].app_rating;
+					uint32_t color;
+					for (int i = 0; i < 5; ++i)
 					{
-						case 0:
-						// there is a chance app_rating corrupts so lets just treat all bad cases as 0
-						default:
-							rate_img = rate_0_img;
-							break;
+						if (rating > i)
+							color = 0xFFFFFFFF;
+						else
+							color = 0x00000040;
 
-						case 1:
-							rate_img = rate_1_img;
-							break;
-
-						case 2:
-							rate_img = rate_2_img;
-							break;
-
-						case 3:
-							rate_img = rate_3_img;
-							break;
-
-						case 4:
-							rate_img = rate_4_img;
-							break;
-
-						case 5:
-							rate_img = rate_5_img;
-							break;
-
+						GRRLIB_DrawImg(70 + ( rate_star_img->w * i ), 400, rate_star_img, 0, 1, 1, color);
 					}
 
-					GRRLIB_DrawImg(70, 400, rate_img, 0, 1, 1, 0xFFFFFFFF);
-
-					// user rating
-					switch (atoi(homebrew_list[current_app].user_rating))
+					rating = atoi(homebrew_list[current_app].user_rating);
+					for (int i = 0; i < 5; ++i)
 					{
-						case -1:
-						case 0:
-							rate_img = rate_0_img;
-							break;
+						if (rating > i)
+							color = 0xFFFFFFFF;
+						else
+							color = 0x00000040;
 
-						case 1:
-							rate_img = rate_1_img;
-							break;
-
-						case 2:
-							rate_img = rate_2_img;
-							break;
-
-						case 3:
-							rate_img = rate_3_img;
-							break;
-
-						case 4:
-							rate_img = rate_4_img;
-							break;
-
-						case 5:
-							rate_img = rate_5_img;
-							break;
+						GRRLIB_DrawImg(180 + ( rate_star_img->w * i ), 400, rate_star_img, 0, 1, 1, color);
 					}
-
-					GRRLIB_DrawImg(180, 400, rate_img, 0, 1, 1, 0xFFFFFFFF);
 				}
 
 				// Download or updated enabled?
@@ -2338,31 +2288,43 @@ int main(int argc, char **argv) {
 			// Submit Rating
 			if (rating_in_progress == true) {
 				GRRLIB_DrawImg(210, 374, str_rate_app, 0, 1.0, 1.0, 0xFFFFFFFF);
-				GRRLIB_DrawImg(208, 400, rate_0_img, 0, 2, 2, 0xFFFFFFFF);
+				//GRRLIB_DrawImg(208, 400, rate_0_img, 0, 2, 2, 0xFFFFFFFF);
 
+				int rating = 0;
+				uint32_t color;
 				bool submit_rating = false;
 
 				if (wait_a_press == 0) {
 					if (ir.x > 196 && ir.x < 235 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(208, 400, rate_1_img, 0, 2, 2, 0xFFFFFFFF);
+						rating = 1;
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '1'; submit_rating = true; }
 					}
 					if (ir.x > 235 && ir.x < 274 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(208, 400, rate_2_img, 0, 2, 2, 0xFFFFFFFF);
+						rating = 2;
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '2'; submit_rating = true; }
 					}
 					if (ir.x > 274 && ir.x < 312 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(208, 400, rate_3_img, 0, 2, 2, 0xFFFFFFFF);
+						rating = 3;
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '3'; submit_rating = true; }
 					}
 					if (ir.x > 312 && ir.x < 351 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(208, 400, rate_4_img, 0, 2, 2, 0xFFFFFFFF);
+						rating = 4;
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '4'; submit_rating = true; }
 					}
 					if (ir.x > 351 && ir.x < 390 && ir.y > 398 && ir.y < 435) {
-						GRRLIB_DrawImg(208, 400, rate_5_img, 0, 2, 2, 0xFFFFFFFF);
+						rating = 5;
 						if (pressed & WPAD_BUTTON_A || pressed & WPAD_BUTTON_2 || pressed_gc & PAD_BUTTON_A) { rating_number[0] = '5'; submit_rating = true; }
 					}
+				}
+
+				for (int i = 0; i < 5; ++i)
+				{
+					if (rating > i)
+						color = 0xFFFFFFFF;
+					else
+						color = 0x00000040;
+
+					GRRLIB_DrawImg(208 + ( rate_star_img->w * i * 2 ), 400, rate_star_img, 0, 2, 2, color);
 				}
 
 				if (submit_rating == true) {

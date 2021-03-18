@@ -21,6 +21,7 @@ SOURCES		:=	source source/gfx source/GRRLIB source/GRRLIB/fonts source/libpng so
 DATA		:=	data
 INCLUDES	:=	$(CURDIR)/source/ $(PORTLIBS_PATH)/ppc/include/ $(PORTLIBS_PATH)/ppc/include/freetype2/
 
+# https://web.archive.org/web/20200728174311/https://www.codemii.com/hbb-repositories/
 MAIN_DOMAIN 	:=	hbb1.oscwii.org
 FALLBACK_DOMAIN	:=	hbb2.oscwii.org
 
@@ -28,10 +29,12 @@ FALLBACK_DOMAIN	:=	hbb2.oscwii.org
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS		= -g -O -mrvl -Wall -DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" $(MACHDEP) $(INCLUDE)
-CXXFLAGS	=	$(CFLAGS)
+CFLAGS		:=	-g -O -mrvl -Wall
+CFLAGS		+=	-DMAIN_DOMAIN=\"$(MAIN_DOMAIN)\" -DFALLBACK_DOMAIN=\"$(FALLBACK_DOMAIN)\" # -D_WANT_USE_LONG_TIME_T
+CFLAGS		+=	$(MACHDEP) $(INCLUDE)
+CXXFLAGS	:=	$(CFLAGS)
 
-LDFLAGS		=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
+LDFLAGS		:=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
@@ -137,9 +140,6 @@ $(OUTPUT).elf: $(OFILES)
 	@echo $(notdir $<)
 	@$(bin2o)
 
-#---------------------------------------------------------------------------------
-# This rule links in binary data with the .jpg extension
-#---------------------------------------------------------------------------------
 %.jpg.o	:	%.jpg
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
